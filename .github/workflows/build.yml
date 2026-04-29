@@ -1,0 +1,198 @@
+name: Android Build & Release
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  APP_NAME: "RussianTVPlayer"
+
+jobs:
+  # Job для проверки качества кода
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint Check
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run Lint
+        run: ./gradlew lintDebug --no-daemon
+        continue-on-error: true
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-debug.html
+          retention-days: 7
+
+  # Job для сборки и тестирования
+  build:
+    runs-on: ubuntu-latest
+    name: Build & Test
+    needs: lint
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Decode Keystore (for release builds)
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          ENCODED_STRING: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: |
+          if [ ! -z "$ENCODED_STRING" ]; then
+            echo $ENCODED_STRING | base64 -d > app/release-key.jks
+          fi
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Build Release APK
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --no-daemon --stacktrace
+
+      - name: Build Release Bundle (AAB)
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: ./gradlew bundleRelease --no-daemon --stacktrace
+
+      - name: Run Tests (if any)
+        run: ./gradlew test --no-daemon
+        continue-on-error: true
+
+      - name: Get Version Info
+        id: version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Built version: $VERSION"
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 14
+
+      - name: Upload Release APK
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 30
+
+      - name: Upload Release Bundle
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-bundle
+          path: app/build/outputs/bundle/release/*.aab
+          retention-days: 30
+
+  # Job для создания релиза на GitHub
+  release:
+    runs-on: ubuntu-latest
+    name: Create GitHub Release
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Release APK
+        uses: actions/download-artifact@v4
+        with:
+          name: release-apk
+          path: ./artifacts/apk
+
+      - name: Download Release Bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: release-bundle
+          path: ./artifacts/bundle
+
+      - name: Get Version Info
+        id: version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "Release ${{ steps.version.outputs.version }}"
+          body: |
+            ## 📺 Russian TV Player - Version ${{ steps.version.outputs.version }}
+            
+            ### 🎯 Что нового:
+            - Просмотр российских телеканалов в высоком качестве
+            - Поддержка управления с пульта ДУ
+            - Электронная программа передач (EPG)
+            - Настройки часового пояса и языка интерфейса
+            - Выбор качества потока (минимум, среднее, максимум, авто)
+            - Запоминание последнего канала
+            
+            ### 📦 Файлы для установки:
+            - `app-release.apk` - Для установки на Android TV приставки
+            - `app-release.aab` - Для публикации в Google Play Store
+            
+            ### 🔧 Требования:
+            - Android 7.0 (API 24) или выше
+            - Устройство с поддержкой Android TV или пульт ДУ
+            
+            ### 📝 Установка:
+            1. Скачайте файл `app-release.apk`
+            2. Установите на ваше Android TV устройство
+            3. Запустите приложение и наслаждайтесь просмотром!
+            
+            ---
+            *Сборка выполнена автоматически через GitHub Actions*
+          files: |
+            ./artifacts/apk/*.apk
+            ./artifacts/bundle/*.aab
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
