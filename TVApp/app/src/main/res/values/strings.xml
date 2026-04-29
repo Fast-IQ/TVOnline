@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ТВ Приставка</string>
+    <string name="settings">Настройки</string>
+    <string name="epg">Программа передач</string>
+    <string name="loading">Загрузка...</string>
+    <string name="error_playback">Ошибка воспроизведения</string>
+    <string name="channel">Канал</string>
+    <string name="current_program">Сейчас в эфире</string>
+    <string name="quality">Качество</string>
+    <string name="timezone">Часовой пояс</string>
+    <string name="language">Язык</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
+    <string name="auto">Авто</string>
+    <string name="minimum">Минимальное</string>
+    <string name="medium">Среднее</string>
+    <string name="maximum">Максимальное</string>
+</resources>
