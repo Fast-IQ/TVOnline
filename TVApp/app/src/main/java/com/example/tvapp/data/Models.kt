@@ -6,7 +6,8 @@ data class Channel(
     val logoUrl: String,
     val streamUrl: String,
     val category: String = "general",
-    val epgId: String? = null
+    val epgId: String? = null,
+    val channelImageUrl: String? = null
 )
 
 data class Program(
@@ -37,7 +38,8 @@ object ChannelList {
             logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Channel_One_Russia_logo_2024.svg/200px-Channel_One_Russia_logo_2024.svg.png",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/1.m3u8",
             category = "federal",
-            epgId = "c1r"
+            epgId = "c1r",
+            channelImageUrl = "https://img.youtube.com/vi/jfKfPnJR9yw/maxresdefault.jpg"
         ),
         Channel(
             id = "rossiya1",
@@ -45,7 +47,8 @@ object ChannelList {
             logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Russia_1_logo_%282017%29.svg/200px-Russia_1_logo_%282017%29.svg.png",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/2.m3u8",
             category = "federal",
-            epgId = "rossiya1"
+            epgId = "rossiya1",
+            channelImageUrl = "https://img.youtube.com/vi/7HqZdXqLzKw/maxresdefault.jpg"
         ),
         Channel(
             id = "ntv",
@@ -53,7 +56,8 @@ object ChannelList {
             logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/NTV_logo_2021.svg/200px-NTV_logo_2021.svg.png",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/4.m3u8",
             category = "federal",
-            epgId = "ntv"
+            epgId = "ntv",
+            channelImageUrl = "https://img.youtube.com/vi/MnqOGWBmMJE/maxresdefault.jpg"
         ),
         Channel(
             id = "5tv",
