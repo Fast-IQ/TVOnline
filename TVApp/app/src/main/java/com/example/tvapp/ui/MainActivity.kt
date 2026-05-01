@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun openSettings() {
-        val intent = android.content.Intent(this, SettingsActivity::class.java)
+        val intent = android.content.Intent(this, com.example.tvapp.settings.SettingsActivity::class.java)
         startActivity(intent)
     }
     
