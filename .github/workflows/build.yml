@@ -3,6 +3,8 @@ name: Android Build & Release
 on:
   push:
     branches: [ main ]
+  release:
+    types: [ published ]
 
 env:
   APP_NAME: "RussianTVPlayer"
@@ -69,7 +71,7 @@ jobs:
         run: chmod +x TVApp/gradlew
 
       - name: Decode Keystore (for release builds)
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         env:
           ENCODED_STRING: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
@@ -81,10 +83,11 @@ jobs:
           fi
 
       - name: Build Debug APK
+        if: github.event_name == 'push'
         run: cd TVApp && ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Build Release APK
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         env:
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
@@ -92,7 +95,7 @@ jobs:
         run: cd TVApp && ./gradlew assembleRelease --no-daemon --stacktrace
 
       - name: Build Release Bundle (AAB)
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         env:
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
@@ -105,7 +108,7 @@ jobs:
 
       - name: Get Version Info
         id: version
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         run: |
           VERSION=${GITHUB_REF#refs/tags/v}
           echo "version=$VERSION" >> $GITHUB_OUTPUT
@@ -119,7 +122,7 @@ jobs:
           retention-days: 14
 
       - name: Upload Release APK
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
@@ -127,7 +130,7 @@ jobs:
           retention-days: 30
 
       - name: Upload Release Bundle
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
         with:
           name: release-bundle
@@ -139,7 +142,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Create GitHub Release
     needs: build
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
     
     steps:
       - name: Checkout code
