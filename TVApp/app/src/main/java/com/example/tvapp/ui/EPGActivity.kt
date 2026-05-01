@@ -254,7 +254,9 @@ class EPGActivity : AppCompatActivity() {
     private fun loadEPGForDate() {
         scope.launch {
             try {
-                val adjustedDate = Date(selectedDate.time + (currentTimeZoneOffset * 60 * 60 * 1000L))
+                // Учитываем смещение времени из настроек и текущее смещение пользователя
+                val totalOffset = currentTimeZoneOffset + timeOffsetHours
+                val adjustedDate = Date(selectedDate.time + (totalOffset * 60 * 60 * 1000L))
 
                 val programs = withContext(Dispatchers.IO) {
                     epgRepository.getProgramsForAllChannels(adjustedDate)
