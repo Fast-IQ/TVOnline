@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvapp.R
+import com.example.tvapp.data.Channel
 import com.example.tvapp.data.ChannelList
 import com.example.tvapp.data.EPGRepository
 import com.example.tvapp.data.AppPreferences
@@ -25,6 +26,7 @@ class EPGActivity : AppCompatActivity() {
     private var currentTimeZoneOffset = 0
     private var selectedDate = Date()
     private var timeOffsetHours = 0 // Смещение по времени в часах
+    private var channels: List<Channel> = emptyList() // Список каналов
     
     private val scope = CoroutineScope(Dispatchers.Main + Job())
     
@@ -43,8 +45,9 @@ class EPGActivity : AppCompatActivity() {
     }
     
     private fun setupEPGGrid() {
+        channels = ChannelList.channels // Сохраняем список каналов
         val epgAdapter = EPGAdapter(
-            channels = ChannelList.channels,
+            channels = channels,
             programs = emptyMap(),
             timezoneOffset = currentTimeZoneOffset
         )
@@ -121,13 +124,19 @@ class EPGActivity : AppCompatActivity() {
                 true
             }
             KeyEvent.KEYCODE_DPAD_UP -> {
-                // Переключение на предыдущий день
-                changeDate(-1)
+                // Прокрутка списка каналов вверх
+                val currentPos = (epgRecyclerView.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+                if (currentPos > 0) {
+                    epgRecyclerView.scrollToPosition(currentPos - 1)
+                }
                 true
             }
             KeyEvent.KEYCODE_DPAD_DOWN -> {
-                // Переключение на следующий день
-                changeDate(1)
+                // Прокрутка списка каналов вниз
+                val currentPos = (epgRecyclerView.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+                if (currentPos < channels.size - 1) {
+                    epgRecyclerView.scrollToPosition(currentPos + 1)
+                }
                 true
             }
             KeyEvent.KEYCODE_DPAD_LEFT -> {
