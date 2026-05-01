@@ -3,7 +3,6 @@ package com.example.tvapp.data
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
-import java.net.URL
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,7 +15,7 @@ class EPGRepository {
         return withContext(Dispatchers.IO) {
             try {
                 // Пытаемся загрузить EPG для канала
-                val url = "$url/$channelId.xml"
+                val url = "$epgBaseUrl/$channelId.xml"
                 val xmlContent = URL(url).readText()
                 parseEPGXml(xmlContent, channelId, date)
             } catch (e: Exception) {
