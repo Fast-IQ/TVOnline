@@ -1,81 +1,53 @@
 ```
-# Build artifacts
-build/
+# Build outputs
+TVApp/app/build/
+TVApp/.gradle/
+.build/
+/dist/
 
 # Dependencies
-.gradle/
-node_modules/
-venv/
-.venv/
-__pycache__/
-*.egg-info/
+TVApp/app/libs/
 
-# Logs and temp files
-*.log
-*.tmp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
+# IDE files
 .idea/
-*.swp
-*.swo
+*.iml
+*.ipr
+*.iws
+.vscode/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Coverage
-.coverage
-coverage/
-htmlcov/
-
-# Python
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-*.egg
-
-# Java
+# Compiled files
 *.class
-*.jar
-*.war
-*.ear
-*.nar
-target/
+*.dex
 
-# JavaScript
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Local configuration file (sdk path, etc)
+local.properties
 
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Log Files
+*.log
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# External native build folder generated in Android Studio 2.2 and later
+.externalNativeBuild
+
+# NDK
+obj/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Generated files
+gen/
+out/
+
+# Gradle
+.gradle/
+!TVApp/.gradle/
+!TVApp/app/.gradle/
+
+# Temporary folders
+tmp/
+temp/
 ```

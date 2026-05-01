@@ -3,6 +3,7 @@ package com.example.tvapp.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,8 @@ import com.example.tvapp.data.Channel
 import com.example.tvapp.data.Program
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.max
+import kotlin.math.min
 
 class EPGAdapter(
     private var channels: List<Channel>,
@@ -19,22 +22,31 @@ class EPGAdapter(
 ) : RecyclerView.Adapter<EPGAdapter.EPGViewHolder>() {
 
     private val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-    private val fullDateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
-
+    
+    // Константы для отображения
+    private val pixelsPerMinute = 2f // 2 пикселя на минуту
+    private val startHour = 0 // Начало отображения с 00:00
+    private val endHour = 24 // Конец отображения 24:00
+    private val totalMinutes = (endHour - startHour) * 60 // 1440 минут
+    
     fun getPrograms(): Map<String, List<Program>> = programs
 
     inner class EPGViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val channelName: TextView = itemView.findViewById(R.id.channelName)
-        private val programList: RecyclerView = itemView.findViewById(R.id.programList)
+        private val programContainer: LinearLayout = itemView.findViewById(R.id.programContainer)
 
         fun bind(channel: Channel, channelPrograms: List<Program>?) {
             channelName.text = channel.name
             
+            // Очищаем контейнер
+            programContainer.removeAllViews()
+            
             val sortedPrograms = channelPrograms?.sortedBy { it.startTime } ?: emptyList()
             
-            programList.apply {
-                layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = ProgramListAdapter(sortedPrograms)
+            // Добавляем передачи в контейнер
+            sortedPrograms.forEach { program ->
+                val programView = createProgramView(program)
+                programContainer.addView(programView)
             }
             
             // Фокус для навигации
@@ -46,57 +58,67 @@ class EPGAdapter(
                 }
             }
         }
-    }
-
-    inner class ProgramListAdapter(
-        private var programList: List<Program>
-    ) : RecyclerView.Adapter<ProgramListAdapter.ProgramItemViewHolder>() {
-
-        inner class ProgramItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            private val programTitle: TextView = itemView.findViewById(R.id.programTitle)
-            private val programTime: TextView = itemView.findViewById(R.id.programTime)
-
-            fun bind(program: Program) {
-                programTitle.text = program.title
-                programTime.text = "${dateFormat.format(Date(program.startTime))} - ${dateFormat.format(Date(program.endTime))}"
-                
-                // Подсветка текущей программы
-                val currentTime = System.currentTimeMillis() + (timezoneOffset * 60 * 60 * 1000L)
-                if (program.isLive(currentTime)) {
-                    itemView.setBackgroundResource(R.drawable.live_indicator)
+        
+        private fun createProgramView(program: Program): View {
+            val view = LayoutInflater.from(itemView.context)
+                .inflate(R.layout.item_program, programContainer, false)
+            
+            val titleText: TextView = view.findViewById(R.id.programTitle)
+            val timeText: TextView = view.findViewById(R.id.programTime)
+            
+            titleText.text = program.title
+            timeText.text = "${dateFormat.format(Date(program.startTime))} - ${dateFormat.format(Date(program.endTime))}"
+            
+            // Вычисляем позицию и ширину программы
+            val startTimeMinutes = getMinutesFromStartOfDay(program.startTime)
+            val endTimeMinutes = getMinutesFromStartOfDay(program.endTime)
+            val durationMinutes = max(0, endTimeMinutes - startTimeMinutes)
+            
+            // Позиционирование через LayoutParams
+            val params = LinearLayout.LayoutParams(
+                (durationMinutes * pixelsPerMinute).toInt(),
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.marginStart = (startTimeMinutes * pixelsPerMinute).toInt()
+            params.topMargin = 4
+            params.bottomMargin = 4
+            view.layoutParams = params
+            
+            // Подсветка текущей программы
+            val currentTime = System.currentTimeMillis() + (timezoneOffset * 60 * 60 * 1000L)
+            if (program.isLive(currentTime)) {
+                view.setBackgroundResource(R.drawable.live_indicator)
+            } else {
+                view.setBackgroundResource(R.drawable.program_item_background)
+            }
+            
+            // Обработка выбора программы
+            view.setOnClickListener {
+                // Можно реализовать перемотку к этой программе если это архив
+            }
+            
+            // Фокус
+            view.setOnFocusChangeListener { v, hasFocus ->
+                if (hasFocus) {
+                    v.scaleX = 1.1f
+                    v.scaleY = 1.1f
                 } else {
-                    itemView.setBackgroundResource(android.R.color.transparent)
-                }
-                
-                // Обработка выбора программы
-                itemView.setOnClickListener {
-                    // Можно реализовать перемотку к этой программе если это архив
-                }
-                
-                // Фокус
-                itemView.setOnFocusChangeListener { view, hasFocus ->
-                    if (hasFocus) {
-                        view.scaleX = 1.1f
-                        view.scaleY = 1.1f
-                    } else {
-                        view.scaleX = 1.0f
-                        view.scaleY = 1.0f
-                    }
+                    v.scaleX = 1.0f
+                    v.scaleY = 1.0f
                 }
             }
+            
+            return view
         }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgramItemViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_program, parent, false)
-            return ProgramItemViewHolder(view)
+        
+        private fun getMinutesFromStartOfDay(timestamp: Long): Int {
+            val calendar = Calendar.getInstance().apply {
+                time = Date(timestamp)
+            }
+            val hours = calendar.get(Calendar.HOUR_OF_DAY)
+            val minutes = calendar.get(Calendar.MINUTE)
+            return hours * 60 + minutes
         }
-
-        override fun onBindViewHolder(holder: ProgramItemViewHolder, position: Int) {
-            holder.bind(programList[position])
-        }
-
-        override fun getItemCount(): Int = programList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EPGViewHolder {
@@ -116,5 +138,23 @@ class EPGAdapter(
     fun updatePrograms(newPrograms: Map<String, List<Program>>) {
         programs = newPrograms
         notifyDataSetChanged()
+    }
+    
+    fun getPixelsPerMinute(): Float {
+        return pixelsPerMinute
+    }
+    
+    fun getTotalWidth(): Int {
+        return (totalMinutes * pixelsPerMinute).toInt()
+    }
+    
+    fun getTimeScaleMarks(): List<Pair<Int, String>> {
+        val marks = mutableListOf<Pair<Int, String>>()
+        for (hour in startHour..endHour) {
+            val minutePosition = hour * 60 * pixelsPerMinute
+            val timeLabel = if (hour < 24) String.format("%02d:00", hour) else "24:00"
+            marks.add(Pair(minutePosition.toInt(), timeLabel))
+        }
+        return marks
     }
 }
