@@ -1,3 +1,39 @@
-Since there are no added, deleted, or modified files listed in the input (all arrays are empty), and only the .gitignore file itself is marked as modified but no content is provided, there are no specific files to ignore based on the change list.
+```yaml
+name: Build CI
 
-Output: (empty)
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run tests
+      run: |
+        python -m pytest tests/
+    
+    - name: Build project
+      run: |
+        python setup.py build
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-output
+        path: build/
+```
