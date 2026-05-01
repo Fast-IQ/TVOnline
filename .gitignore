@@ -1,52 +1,5 @@
 ```
-# Build artifacts
-build/
-*.apk
-*.aab
-*.aar
-
-# Dependencies
 .gradle/
-node_modules/
-venv/
-.venv/
-
-# Logs and temp files
 *.log
 *.tmp
-*.swp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-*.iml
-*.iws
-*.swo
-*.swn
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Java/Kotlin specific
-*.class
-*.jar
-*.war
-*.ear
-*.so
-*.dll
-*.dylib
-
-# Gradle
-.gradle/
-!gradle/wrapper/gradle-wrapper.jar
-
-# Android specific
-*.keystore
-local.properties
 ```
