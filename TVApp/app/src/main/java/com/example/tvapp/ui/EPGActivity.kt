@@ -219,34 +219,16 @@ class EPGActivity : AppCompatActivity() {
             }
         }
 
-        // Текст времени начала-конца
-        val timeText = TextView(this).apply {
-            text = "${dateFormat.format(Date(program.startTime))} - ${dateFormat.format(Date(program.endTime))}"
-            textSize = 10f
-            setTextColor(getColor(R.color.text_secondary))
-        }
-
-        // Название передачи (только название, без темы, в одну строку)
-        val titleText = TextView(this).apply {
-            text = program.title
+        // Текст времени начала-конца и названия передачи в одной строке
+        val programText = TextView(this).apply {
+            text = "${dateFormat.format(Date(program.startTime))} - ${dateFormat.format(Date(program.endTime))} ${program.title}"
             textSize = 12f
             setTextColor(getColor(R.color.white))
             maxLines = 1
             ellipsize = android.text.TextUtils.TruncateAt.END
         }
 
-        // Вертикальный layout для времени и названия
-        val verticalLayout = LinearLayout(this@EPGActivity).apply {
-            orientation = LinearLayout.VERTICAL
-            layoutParams = FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-            )
-        }
-
-        verticalLayout.addView(timeText)
-        verticalLayout.addView(titleText)
-        container.addView(verticalLayout)
+        container.addView(programText)
 
         // Проверка на текущую программу
         val currentTime = System.currentTimeMillis() + (currentTimeZoneOffset * 60 * 60 * 1000L)
