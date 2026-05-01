@@ -183,7 +183,7 @@ class EPGActivity : AppCompatActivity() {
                 val programView = createProgramBlock(program, width)
 
                 val params = FrameLayout.LayoutParams(width, rowHeight - 8).apply {
-                    leftMargin = leftMargin
+                    marginStart = leftMargin
                     topMargin = index * rowHeight + 4
                 }
 
@@ -197,7 +197,7 @@ class EPGActivity : AppCompatActivity() {
 
         val container = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            padding = 8
+            setPadding(8, 8, 8, 8)
             setBackgroundResource(R.drawable.program_item_background)
             isClickable = true
             isFocusable = true
