@@ -1,106 +1,31 @@
---- .gitignore (原始)
 ```
-# Compiled and build artifacts
-*.class
-*.dex
-*.so
+# Build artifacts
+*.apk
 *.aar
-# Dependencies
-.gradle/
-build/
-# Logs and temp files
-*.log
-*.tmp
-# Environment
-.env
-.env.local
-*.env.*
-# Editors
-.vscode/
-.idea/
-```
-
-+++ .gitignore (修改后)
-```kotlin
-# Kotlin/Android build artifacts
-*.class
-*.dex
 *.jar
-*.aar
-*.so
-*.dll
-*.dylib
-
-# Android specific
+*.class
 build/
-.gradle/
-local.properties
-captures/
-.externalNativeBuild/
+app/build/
+
+# Dependencies
+node_modules/
+libs/
 
 # IDE files
+.gradle/
 .idea/
+.vscode/
 *.iml
 *.ipr
 *.iws
-.vscode/
-
-# Gradle
-.gradle/
-gradle-app.setting
-
-# Logs
-*.log
-
-# Temp files
-*.tmp
-*.temp
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Coverage
-coverage/
-*.coverage
-.htmlcov/
-
-# Python (if any Python tools used in project)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-
-# Node (if any Node tools used in project)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Compiled source
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# Packages
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
 
 # System files
 .DS_Store
 Thumbs.db
+
+# Logs
+*.log
+
+# Local configuration
+local.properties
 ```
