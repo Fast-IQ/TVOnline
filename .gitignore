@@ -2,20 +2,41 @@
 # Gradle
 .gradle/
 build/
+!TVApp/gradle/wrapper/gradle-wrapper.jar
+!TVApp/gradle/wrapper/gradle-wrapper.properties
+!TVApp/gradlew
+!TVApp/gradlew.bat
 
 # Dependencies
 node_modules/
-vendor/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
 
-# Logs
+# Compiled files
+*.class
+*.pyc
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
+
+# Logs and temp files
 *.log
+*.tmp
+*.swp
+*.swo
 
 # Environment
 .env
 .env.local
 *.env.*
 
-# IDE
+# Editors
 .vscode/
 .idea/
 *.swp
@@ -30,27 +51,7 @@ coverage/
 htmlcov/
 .coverage
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-*.egg-info/
-.eggs/
-
-# Compiled
-*.class
-*.o
-*.obj
-*.out
-*.dll
-*.so
-*.a
-*.exe
-
-# Compressed
+# Compressed files
 *.zip
 *.gz
 *.tar
