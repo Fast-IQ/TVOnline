@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import android.widget.FrameLayout
-import android.graphics.drawable.GradientDrawable
 import android.view.View
+import android.graphics.drawable.GradientDrawable
 import com.example.tvapp.R
 import com.example.tvapp.data.Channel
 import com.example.tvapp.data.ChannelList
@@ -24,6 +24,7 @@ import java.util.*
 class EPGActivity : AppCompatActivity() {
 
     private lateinit var currentTimeText: TextView
+    private lateinit var timeOffsetText: TextView
     private lateinit var timeScaleContainer: LinearLayout
     private lateinit var channelLabelsContainer: LinearLayout
     private lateinit var epgGridContainer: FrameLayout
@@ -37,18 +38,16 @@ class EPGActivity : AppCompatActivity() {
 
     private var currentTimeZoneOffset = 0
     private var selectedDate = Date()
-    private var timeOffsetHours = 0 // Смещение по времени в часах
+    private var timeOffsetHours = 0 // Смещение по времени в часах (-12 до +12)
     private var channels: List<Channel> = emptyList()
 
     private val scope = CoroutineScope(Dispatchers.Main + Job())
 
     // Настройки временной шкалы
-    private val pixelsPerHour = 200f // Пикселей на час
+    private val pixelsPerHour = 150f // Пикселей на час
     private val pixelsPerMinute = pixelsPerHour / 60f
-    private val rowHeight = 80 // Высота строки канала в пикселях
-    private val startHour = 6 // Начало отображения (6:00)
-    private val endHour = 30 // Конец отображения (30 часов = 6:00 следующего дня)
-    private val totalHours = endHour - startHour
+    private val rowHeight = 70 // Высота строки канала в пикселях
+    private val totalHours = 24 // Показываем 24 часа (от -12 до +12 от текущего времени)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +55,7 @@ class EPGActivity : AppCompatActivity() {
 
         currentTimeZoneOffset = preferences.timezoneOffset
         currentTimeText = findViewById(R.id.currentTimeText)
+        timeOffsetText = findViewById(R.id.timeOffsetText)
         timeScaleContainer = findViewById(R.id.timeScaleContainer)
         channelLabelsContainer = findViewById(R.id.channelLabelsContainer)
         epgGridContainer = findViewById(R.id.epgGridContainer)
@@ -118,24 +118,21 @@ class EPGActivity : AppCompatActivity() {
     private fun createTimeScale() {
         timeScaleContainer.removeAllViews()
 
-        for (hour in startHour until endHour) {
+        // Показываем временную шкалу от -12 до +12 часов от текущего времени
+        for (hourOffset in -12..12) {
+            val calendar = Calendar.getInstance().apply {
+                add(Calendar.HOUR_OF_DAY, hourOffset)
+            }
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            
             val timeText = TextView(this).apply {
-                text = String.format("%02d:00", hour % 24)
+                text = String.format("%02d:00", hour)
                 textSize = 14f
                 setTextColor(getColor(R.color.text_secondary))
                 width = pixelsPerHour.toInt()
                 gravity = android.view.Gravity.CENTER
             }
             timeScaleContainer.addView(timeText)
-
-            // Добавляем разделительные линии
-            if (hour % 2 == 0 && hour != startHour) {
-                val separator = View(this).apply {
-                    layoutParams = LinearLayout.LayoutParams(2, 40)
-                    setBackgroundColor(getColor(R.color.text_secondary))
-                }
-                // Смещаем назад на половину ширины
-            }
         }
     }
 
@@ -162,22 +159,29 @@ class EPGActivity : AppCompatActivity() {
     private fun renderPrograms(programs: Map<String, List<Program>>) {
         epgGridContainer.removeAllViews()
 
+        // Базовое время - текущее время минус 12 часов
         val baseTime = getStartTimeMillis()
 
         channels.forEachIndexed { index, channel ->
             val channelPrograms = programs[channel.id] ?: return@forEachIndexed
 
             channelPrograms.forEach { program ->
-                // Вычисляем позицию и размер программы
+                // Вычисляем позицию и размер программы относительно базового времени
                 val startTimeOffset = (program.startTime - baseTime) / 1000f / 60f // минуты от начала
                 val endTimeOffset = (program.endTime - baseTime) / 1000f / 60f
                 val duration = (program.endTime - program.startTime) / 1000f / 60f // длительность в минутах
 
-                // Пропускаем программы вне видимого диапазона
-                if (endTimeOffset < startHour * 60 || startTimeOffset > endHour * 60) return@forEach
+                // Пропускаем программы вне видимого диапазона (24 часа)
+                val visibleStartMinutes = 0f
+                val visibleEndMinutes = totalHours * 60f
+                
+                if (endTimeOffset < visibleStartMinutes || startTimeOffset > visibleEndMinutes) {
+                    return@forEach
+                }
 
+                // Вычисляем левый отступ и ширину
                 val leftMargin = (startTimeOffset * pixelsPerMinute).toInt().coerceAtLeast(0)
-                val width = (duration * pixelsPerMinute).toInt().coerceAtLeast(60)
+                val width = (duration * pixelsPerMinute).toInt().coerceAtLeast(40)
 
                 // Создаем блок программы
                 val programView = createProgramBlock(program, width)
@@ -195,8 +199,7 @@ class EPGActivity : AppCompatActivity() {
     private fun createProgramBlock(program: Program, width: Int): View {
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-        val container = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
+        val container = FrameLayout(this).apply {
             setPadding(8, 8, 8, 8)
             setBackgroundResource(R.drawable.program_item_background)
             isClickable = true
@@ -216,28 +219,34 @@ class EPGActivity : AppCompatActivity() {
             }
         }
 
+        // Текст времени начала-конца
         val timeText = TextView(this).apply {
             text = "${dateFormat.format(Date(program.startTime))} - ${dateFormat.format(Date(program.endTime))}"
-            textSize = 11f
+            textSize = 10f
             setTextColor(getColor(R.color.text_secondary))
         }
 
+        // Название передачи (только название, без темы, в одну строку)
         val titleText = TextView(this).apply {
             text = program.title
-            textSize = 13f
+            textSize = 12f
             setTextColor(getColor(R.color.white))
-            maxLines = 2
+            maxLines = 1
             ellipsize = android.text.TextUtils.TruncateAt.END
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                topMargin = 4
-            }
         }
 
-        container.addView(timeText)
-        container.addView(titleText)
+        // Вертикальный layout для времени и названия
+        val verticalLayout = LinearLayout(this@EPGActivity).apply {
+            orientation = LinearLayout.VERTICAL
+            layoutParams = FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+            )
+        }
+
+        verticalLayout.addView(timeText)
+        verticalLayout.addView(titleText)
+        container.addView(verticalLayout)
 
         // Проверка на текущую программу
         val currentTime = System.currentTimeMillis() + (currentTimeZoneOffset * 60 * 60 * 1000L)
@@ -249,9 +258,10 @@ class EPGActivity : AppCompatActivity() {
     }
 
     private fun getStartTimeMillis(): Long {
+        // Базовое время - текущее время минус 12 часов с учетом смещения
         val calendar = Calendar.getInstance().apply {
             time = selectedDate
-            set(Calendar.HOUR_OF_DAY, startHour)
+            add(Calendar.HOUR_OF_DAY, -12 + timeOffsetHours)
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
             set(Calendar.MILLISECOND, 0)
@@ -282,19 +292,18 @@ class EPGActivity : AppCompatActivity() {
     }
 
     private fun scrollToCurrentTime() {
-        val currentTime = System.currentTimeMillis() + ((currentTimeZoneOffset + timeOffsetHours) * 60 * 60 * 1000L)
-        val baseTime = getStartTimeMillis()
-
-        val minutesFromStart = (currentTime - baseTime) / 1000f / 60f
-        val scrollPosition = (minutesFromStart * pixelsPerMinute).toInt() - (epgHorizontalScroll.width / 4)
-
-        epgHorizontalScroll.scrollTo(scrollPosition.coerceAtLeast(0), 0)
+        // Текущее время находится посередине (через 12 часов от начала)
+        val currentPos = (12 * pixelsPerHour).toInt() - (epgHorizontalScroll.width / 2)
+        epgHorizontalScroll.scrollTo(currentPos.coerceAtLeast(0), 0)
     }
 
     private fun updateCurrentTimeDisplay() {
         val currentTime = System.currentTimeMillis() + ((currentTimeZoneOffset + timeOffsetHours) * 60 * 60 * 1000L)
         val dateFormat = SimpleDateFormat("HH:mm dd.MM.yyyy", Locale.getDefault())
         currentTimeText.text = "Время: ${dateFormat.format(Date(currentTime))}"
+        
+        val offsetText = if (timeOffsetHours >= 0) "+$timeOffsetHours" else "$timeOffsetHours"
+        timeOffsetText.text = "Смещение: ${offsetText}ч"
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -330,40 +339,23 @@ class EPGActivity : AppCompatActivity() {
         }
     }
 
-    private fun changeDate(days: Int) {
-        val calendar = Calendar.getInstance().apply {
-            time = selectedDate
-            add(Calendar.DAY_OF_YEAR, days)
-        }
-        selectedDate = calendar.time
-        timeOffsetHours = 0
-
-        val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-        Toast.makeText(
-            this,
-            "Дата: ${dateFormat.format(selectedDate)}",
-            Toast.LENGTH_SHORT
-        ).show()
-
-        loadEPGForDate()
-        updateCurrentTimeDisplay()
-    }
-
     private fun changeTimeOffset(hours: Int) {
         timeOffsetHours += hours
 
-        if (timeOffsetHours > 12) timeOffsetHours = 12
-        if (timeOffsetHours < -12) timeOffsetHours = -12
+        // Ограничиваем смещение от -12 до +12
+        if (timeOffsetHours > 12) {
+            timeOffsetHours = 12
+            Toast.makeText(this, "Максимальное смещение: +12 часов", Toast.LENGTH_SHORT).show()
+        }
+        if (timeOffsetHours < -12) {
+            timeOffsetHours = -12
+            Toast.makeText(this, "Минимальное смещение: -12 часов", Toast.LENGTH_SHORT).show()
+        }
 
-        val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        val currentTime = System.currentTimeMillis() + ((currentTimeZoneOffset + timeOffsetHours) * 60 * 60 * 1000L)
-
-        Toast.makeText(
-            this,
-            "Смещение: ${if (hours > 0) "+" else ""}${hours}ч (${timeFormat.format(Date(currentTime))})",
-            Toast.LENGTH_SHORT
-        ).show()
-
+        // Перерисовываем временную шкалу
+        createTimeScale()
+        
+        // Загружаем программы для нового временного диапазона
         loadEPGForDate()
         updateCurrentTimeDisplay()
     }
