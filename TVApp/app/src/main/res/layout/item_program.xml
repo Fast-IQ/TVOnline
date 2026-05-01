@@ -3,8 +3,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:minWidth="150dp"
+    android:padding="8dp"
+    android:minWidth="100dp"
     android:focusable="true"
     android:clickable="true"
     android:background="@drawable/program_item_background">
@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="12:00 - 14:00"
-        android:textSize="12sp"
+        android:textSize="11sp"
         android:textColor="@color/text_secondary" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Название программы"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_marginTop="4dp"

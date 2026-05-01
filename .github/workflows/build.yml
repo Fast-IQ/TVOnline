@@ -2,6 +2,8 @@ name: Android Build & Release
 
 on:
   push:
+    branches: [ main, develop ]
+  pull_request:
     branches: [ main ]
   release:
     types: [ published ]
@@ -36,9 +38,6 @@ jobs:
         run: cd TVApp && ./gradlew lintDebug --no-daemon --stacktrace
         continue-on-error: true
 
-      - name: Clean Gradle Cache
-        run: cd TVApp && ./gradlew clean --no-daemon
-
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
         if: always()
@@ -52,6 +51,9 @@ jobs:
     runs-on: ubuntu-latest
     name: Build & Test
     needs: lint
+    
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     
     steps:
       - name: Checkout code
@@ -74,16 +76,29 @@ jobs:
         if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         env:
           ENCODED_STRING: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
-          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
-          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
-          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: |
           if [ ! -z "$ENCODED_STRING" ]; then
-            echo $ENCODED_STRING | base64 -d > TVApp/app/release-key.jks
+            echo "$ENCODED_STRING" | base64 -d > TVApp/app/release-key.jks
+            echo "Keystore decoded successfully"
+          else
+            echo "Warning: No keystore found in secrets"
           fi
 
+      - name: Get Version Info
+        id: version
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          elif [[ "${{ github.event_name }}" == "release" ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          else
+            VERSION="debug-${{ github.run_number }}-${{ github.sha::7 }}"
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Building version: $VERSION"
+
       - name: Build Debug APK
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
         run: cd TVApp && ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Build Release APK
@@ -102,40 +117,47 @@ jobs:
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
         run: cd TVApp && ./gradlew bundleRelease --no-daemon --stacktrace
 
-      - name: Run Tests (if any)
+      - name: Run Tests
         run: cd TVApp && ./gradlew test --no-daemon
         continue-on-error: true
 
-      - name: Get Version Info
-        id: version
+      - name: List Build Outputs (Debug)
+        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
+        run: find TVApp/app/build/outputs/apk/debug -name "*.apk" -type f
+
+      - name: List Build Outputs (Release)
         if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
-        run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Built version: $VERSION"
+        run: find TVApp/app/build/outputs/apk/release -name "*.apk" -type f
 
       - name: Upload Debug APK
+        if: github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
-          path: TVApp/app/build/outputs/apk/debug/*.apk
+          path: |
+            TVApp/app/build/outputs/apk/debug/*.apk
           retention-days: 14
+          if-no-files-found: error
 
       - name: Upload Release APK
         if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
         with:
           name: release-apk
-          path: TVApp/app/build/outputs/apk/release/*.apk
+          path: |
+            TVApp/app/build/outputs/apk/release/*.apk
           retention-days: 30
+          if-no-files-found: error
 
       - name: Upload Release Bundle
         if: github.event_name == 'release' || startsWith(github.ref, 'refs/tags/v')
         uses: actions/upload-artifact@v4
         with:
           name: release-bundle
-          path: TVApp/app/build/outputs/bundle/release/*.aab
+          path: |
+            TVApp/app/build/outputs/bundle/release/*.aab
           retention-days: 30
+          if-no-files-found: warn
 
   # Job для создания релиза на GitHub
   release:
@@ -160,27 +182,29 @@ jobs:
           name: release-bundle
           path: ./artifacts/bundle
 
-      - name: Get Version Info
-        id: version
+      - name: List Artifacts
         run: |
-          VERSION=${GITHUB_REF#refs/tags/v}
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "=== APK Files ==="
+          ls -la ./artifacts/apk/
+          echo "=== AAB Files ==="
+          ls -la ./artifacts/bundle/
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: "Release ${{ steps.version.outputs.version }}"
+          name: "Release ${{ needs.build.outputs.version }}"
           body: |
-            ## 📺 Russian TV Player - Version ${{ steps.version.outputs.version }}
+            ## 📺 Russian TV Player - Version ${{ needs.build.outputs.version }}
             
             ### 🎯 Что нового:
             - Просмотр российских телеканалов в высоком качестве
             - Поддержка управления с пульта ДУ
-            - Электронная программа передач (EPG)
+            - Электронная программа передач (EPG) с общей временной шкалой
             - Настройки часового пояса и языка интерфейса
             - Выбор качества потока (минимум, среднее, максимум, авто)
             - Запоминание последнего канала
+            - Удобная навигация: ВВЕРХ/ВНИЗ - каналы, ВЛЕВО/ВПРАВО - время
             
             ### 📦 Файлы для установки:
             - `app-release.apk` - Для установки на Android TV приставки

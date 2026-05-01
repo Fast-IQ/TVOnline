@@ -2,6 +2,8 @@ package com.example.tvapp.ui
 
 import android.os.Bundle
 import android.view.KeyEvent
+import android.widget.HorizontalScrollView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,7 @@ class EPGActivity : AppCompatActivity() {
     
     private lateinit var epgRecyclerView: RecyclerView
     private lateinit var currentTimeText: TextView
+    private lateinit var timeScaleContainer: LinearLayout
     private val epgRepository = EPGRepository()
     private val preferences by lazy { AppPreferences(this) }
     
@@ -34,10 +37,12 @@ class EPGActivity : AppCompatActivity() {
         
         currentTimeZoneOffset = preferences.timezoneOffset
         currentTimeText = findViewById(R.id.currentTimeText)
+        timeScaleContainer = findViewById(R.id.timeScaleContainer)
         
         epgRecyclerView = findViewById(R.id.epgRecyclerView)
         
         setupEPGGrid()
+        setupTimeScale()
         loadEPGForDate()
         updateCurrentTimeDisplay()
     }
@@ -52,6 +57,34 @@ class EPGActivity : AppCompatActivity() {
         epgRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@EPGActivity)
             adapter = epgAdapter
+        }
+    }
+    
+    private fun setupTimeScale() {
+        // Создаем временную шкалу с метками каждый час
+        val adapter = epgRecyclerView.adapter as? EPGAdapter ?: return
+        val marks = adapter.getTimeScaleMarks()
+        
+        timeScaleContainer.removeAllViews()
+        
+        marks.forEach { (position, timeLabel) ->
+            val textView = TextView(this).apply {
+                text = timeLabel
+                textSize = 12f
+                setTextColor(getColor(R.color.text_secondary))
+                minWidth = 60 // Минимальная ширина для каждой метки
+                gravity = android.view.Gravity.CENTER
+            }
+            
+            // Устанавливаем отступ слева для позиционирования
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            params.marginStart = if (position == 0) 0 else ((position - marks[marks.size - 2].first) / 24)
+            textView.layoutParams = params
+            
+            timeScaleContainer.addView(textView)
         }
     }
     
@@ -91,8 +124,8 @@ class EPGActivity : AppCompatActivity() {
         // Для горизонтального списка программ первого канала находим текущую программу
         val firstViewHolder = epgRecyclerView.findViewHolderForAdapterPosition(0) as? EPGAdapter.EPGViewHolder
         firstViewHolder?.let { holder ->
-            val programList = holder.itemView.findViewById<RecyclerView>(R.id.programList)
-            val layoutManager = programList.layoutManager as? LinearLayoutManager
+            val programContainer = holder.itemView.findViewById<LinearLayout>(R.id.programContainer)
+            val scrollView = programContainer.parent as? HorizontalScrollView
             
             // Находим индекс текущей программы
             val channelId = ChannelList.channels.firstOrNull()?.id
@@ -101,11 +134,22 @@ class EPGActivity : AppCompatActivity() {
                 it.startTime <= currentTime && it.endTime > currentTime 
             } ?: 0
             
-            if (currentProgramIndex >= 0 && layoutManager != null) {
-                // Прокручиваем так, чтобы текущая программа была видна
-                layoutManager.scrollToPositionWithOffset(currentProgramIndex, programList.width / 4)
+            if (currentProgramIndex >= 0 && scrollView != null) {
+                // Вычисляем позицию прокрутки на основе времени начала программы
+                val startMinutes = getMinutesFromStartOfDay(programs[currentProgramIndex].startTime)
+                val scrollPosition = (startMinutes * adapter.getPixelsPerMinute()).toInt()
+                scrollView.scrollTo(scrollPosition, 0)
             }
         }
+    }
+    
+    private fun getMinutesFromStartOfDay(timestamp: Long): Int {
+        val calendar = Calendar.getInstance().apply {
+            time = Date(timestamp)
+        }
+        val hours = calendar.get(Calendar.HOUR_OF_DAY)
+        val minutes = calendar.get(Calendar.MINUTE)
+        return hours * 60 + minutes
     }
     
     private fun updateCurrentTimeDisplay() {
@@ -121,13 +165,13 @@ class EPGActivity : AppCompatActivity() {
                 true
             }
             KeyEvent.KEYCODE_DPAD_UP -> {
-                // Переключение на предыдущий день
-                changeDate(-1)
+                // Прокрутка списка каналов вверх
+                scrollChannelList(-1)
                 true
             }
             KeyEvent.KEYCODE_DPAD_DOWN -> {
-                // Переключение на следующий день
-                changeDate(1)
+                // Прокрутка списка каналов вниз
+                scrollChannelList(1)
                 true
             }
             KeyEvent.KEYCODE_DPAD_LEFT -> {
@@ -144,23 +188,13 @@ class EPGActivity : AppCompatActivity() {
         }
     }
     
-    private fun changeDate(days: Int) {
-        val calendar = Calendar.getInstance().apply {
-            time = selectedDate
-            add(Calendar.DAY_OF_YEAR, days)
-        }
-        selectedDate = calendar.time
-        timeOffsetHours = 0 // Сбрасываем смещение по времени при смене даты
+    private fun scrollChannelList(direction: Int) {
+        val currentPosition = (epgRecyclerView.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
+        val newPosition = (currentPosition + direction).coerceIn(0, ChannelList.channels.size - 1)
+        epgRecyclerView.scrollToPosition(newPosition)
         
-        val dateFormat = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault())
-        Toast.makeText(
-            this,
-            "Дата: ${dateFormat.format(selectedDate)}",
-            Toast.LENGTH_SHORT
-        ).show()
-        
-        loadEPGForDate()
-        updateCurrentTimeDisplay()
+        val channelName = ChannelList.channels.getOrNull(newPosition)?.name
+        Toast.makeText(this, "Канал: $channelName", Toast.LENGTH_SHORT).show()
     }
     
     private fun changeTimeOffset(hours: Int) {

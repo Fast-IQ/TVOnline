@@ -21,7 +21,7 @@
         android:id="@+id/dateInfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Используйте ВВЕРХ/ВНИЗ для смены даты"
+        android:text="Используйте ВЛЕВО/ВПРАВО для смены времени, ВВЕРХ/ВНИЗ для каналов"
         android:textSize="16sp"
         android:textColor="@color/text_secondary"
         android:layout_marginStart="24dp"
@@ -41,14 +41,37 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="8dp" />
 
+    <!-- Общая временная шкала -->
+    <HorizontalScrollView
+        android:id="@+id/timeScaleScroll"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="150dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/currentTimeText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/timeScaleContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+            <!-- Временные метки будут добавлены программно -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/epgRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:padding="16dp"
         android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/currentTimeText"
+        app:layout_constraintTop_toBottomOf="@id/timeScaleScroll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

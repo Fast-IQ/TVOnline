@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="4dp"
     android:focusable="true"
     android:clickable="true">
 
@@ -16,15 +16,23 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:gravity="center_vertical"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:minHeight="60dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/programList"
+    <HorizontalScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp" />
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/programContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minWidth="2880dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+    </HorizontalScrollView>
 
 </LinearLayout>
