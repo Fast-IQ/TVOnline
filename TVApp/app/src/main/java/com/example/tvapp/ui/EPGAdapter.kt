@@ -21,6 +21,8 @@ class EPGAdapter(
     private val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     private val fullDateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
 
+    fun getPrograms(): Map<String, List<Program>> = programs
+
     inner class EPGViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val channelName: TextView = itemView.findViewById(R.id.channelName)
         private val programList: RecyclerView = itemView.findViewById(R.id.programList)
