@@ -3,6 +3,7 @@ package com.example.tvapp.ui
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -142,7 +143,7 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun openSettings() {
-        val intent = android.content.Intent(this, settings.SettingsActivity::class.java)
+        val intent = android.content.Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
     

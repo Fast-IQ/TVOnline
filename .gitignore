@@ -1,25 +1,15 @@
 ```
-# Gradle
-.gradle/
-build/
-target/
+# Build artifacts
+TVApp/app/build/
+TVApp/.gradle/
+*.apk
+*.aar
 
 # Dependencies
-node_modules/
-venv/
-.venv/
-__pycache__/
-*.egg-info/
-dist/
-bin/
-lib/
-tmp/
+TVApp/app/libs/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.swp
-*.swo
 
 # Environment
 .env
@@ -29,26 +19,32 @@ tmp/
 # Editors
 .vscode/
 .idea/
-*.iml
-*.ipr
-*.iws
+*.swp
+*.swo
 
-# OS generated files
+# OS
 .DS_Store
 Thumbs.db
 
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# Python specific
+# Python (if any Python files exist in the project)
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
-*.so
-.pytest_cache/
-.mypy_cache/
+env/
+venv/
+.venv/
+
+# Gradle
+.gradle/
+build/
+
+# Local configuration
+local.properties
 ```

@@ -34,8 +34,11 @@ jobs:
         run: chmod +x TVApp/gradlew
 
       - name: Run Lint
-        run: cd TVApp && ./gradlew lintDebug --no-daemon
+        run: cd TVApp && ./gradlew lintDebug --no-daemon --stacktrace
         continue-on-error: true
+
+      - name: Clean Gradle Cache
+        run: cd TVApp && ./gradlew clean --no-daemon
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4

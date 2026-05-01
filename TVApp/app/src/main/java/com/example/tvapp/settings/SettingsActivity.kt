@@ -1,6 +1,7 @@
 package com.example.tvapp.settings
 
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.TextView
@@ -172,7 +173,7 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
     
-    override fun android.view.KeyEvent.onKeyMultiple(keyCode: Int, repeatCount: Int, event: android.view.KeyEvent?): Boolean {
+    override fun onKeyMultiple(keyCode: Int, repeatCount: Int, event: KeyEvent?): Boolean {
         return false
     }
 }

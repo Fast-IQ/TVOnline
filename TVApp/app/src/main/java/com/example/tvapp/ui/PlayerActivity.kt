@@ -30,7 +30,7 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
         
-        playerView = findViewById(R.id.playerView)
+        playerView = findViewById<PlayerView>(R.id.playerView)
         
         // Получаем данные о канале
         channelId = intent.getStringExtra("channel_id")
