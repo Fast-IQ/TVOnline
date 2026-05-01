@@ -138,6 +138,7 @@ class MainActivity : AppCompatActivity() {
             putExtra("channel_name", channel.name)
             putExtra("stream_url", channel.streamUrl)
             putExtra("logo_url", channel.logoUrl)
+            putExtra("channel_image_url", channel.channelImageUrl)
         }
         startActivity(intent)
     }
