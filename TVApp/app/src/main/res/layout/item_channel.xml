@@ -39,10 +39,10 @@
             android:ellipsize="end" />
 
         <TextView
-            android:id="@+id/currentProgram"
+            android:id="@+id/programTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Загрузка..."
+            android:text="Название передачи"
             android:textSize="10sp"
             android:textColor="@color/text_secondary"
             android:gravity="center"
