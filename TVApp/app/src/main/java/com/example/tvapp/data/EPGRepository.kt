@@ -68,7 +68,7 @@ class EPGRepository {
         val channel = ChannelList.channels.find { it.id == channelId }
         val channelName = channel?.name ?: "Канал"
         
-        // Генерируем программу на 24 часа
+        // Генерируем программу на 24 часа с разной длительностью передач
         val programTitles = listOf(
             "Новости",
             "Утреннее шоу",
@@ -84,15 +84,18 @@ class EPGRepository {
             "Ночной фильм"
         )
         
+        // Разная длительность передач в минутах (чтобы не было всегда ровно в 00)
+        val durations = listOf(45, 55, 30, 50, 40, 65, 25, 35, 60, 50, 45, 55)
+        
         var currentTime = calendar.timeInMillis
         
         for (i in 0 until 12) {
-            val duration = 2 * 60 * 60 * 1000L // 2 часа
+            val durationMinutes = durations[i % durations.size]
+            val duration = durationMinutes * 60 * 1000L
             val startTime = currentTime
             val endTime = startTime + duration
             
-            val titleIndex = (calendar.get(Calendar.HOUR_OF_DAY) / 2 + i) % programTitles.size
-            val title = "${programTitles[titleIndex]} - $channelName"
+            val title = programTitles[i % programTitles.size]
             
             programs.add(
                 Program(
