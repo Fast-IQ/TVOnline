@@ -29,7 +29,7 @@ class ChannelAdapter(
     inner class ChannelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val channelLogo: ImageView = itemView.findViewById(R.id.channelLogo)
         private val channelName: TextView = itemView.findViewById(R.id.channelName)
-        private val currentProgram: TextView = itemView.findViewById(R.id.currentProgram)
+        private val programTitle: TextView = itemView.findViewById(R.id.programTitle)
 
         fun bind(channel: Channel) {
             channelName.text = channel.name
@@ -41,9 +41,9 @@ class ChannelAdapter(
                 .error(R.drawable.ic_channel_placeholder)
                 .into(channelLogo)
             
-            // Отображение текущей программы
-            val currentProgramTitle = currentProgramsMap[channel.id]
-            currentProgram.text = currentProgramTitle ?: "Загрузка..."
+            // Отображение названия передачи
+            val programTitleText = currentProgramsMap[channel.id]
+            programTitle.text = programTitleText ?: "Название передачи"
             
             // Обработка выбора канала с пульта
             itemView.setOnClickListener {
