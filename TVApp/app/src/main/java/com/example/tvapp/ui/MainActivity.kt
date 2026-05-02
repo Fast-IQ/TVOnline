@@ -132,6 +132,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
     
+    override fun onResume() {
+        super.onResume()
+        // Обновляем часовой пояс при возврате из настроек
+        currentTimeZoneOffset = preferences.timezoneOffset
+        loadEPG()
+    }
+    
     private fun openPlayer(channel: Channel) {
         val intent = android.content.Intent(this, PlayerActivity::class.java).apply {
             putExtra("channel_id", channel.id)
