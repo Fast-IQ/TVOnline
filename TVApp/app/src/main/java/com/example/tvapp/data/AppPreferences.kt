@@ -23,7 +23,7 @@ class AppPreferences(context: Context) {
 
     var timezoneOffset: Int
         get() = prefs.getInt(KEY_TIMEZONE_OFFSET, 0)
-        set(value) = prefs.edit().putInt(KEY_TIMEZONE_OFFSET, value).apply()
+        set(value) = prefs.edit().putInt(KEY_TIMEZONE_OFFSET, value).commit()
 
     var qualityMode: QualityMode
         get() = QualityMode.values()[prefs.getInt(KEY_QUALITY_MODE, QualityMode.AUTO.ordinal)]

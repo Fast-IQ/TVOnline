@@ -323,6 +323,13 @@ class EPGActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Обновляем часовой пояс при возврате из настроек
+        currentTimeZoneOffset = preferences.timezoneOffset
+        loadEPGForDate()
+    }
+
     private fun changeTimeOffset(hours: Int) {
         timeOffsetHours += hours
 
