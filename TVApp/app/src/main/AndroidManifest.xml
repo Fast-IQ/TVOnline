@@ -36,6 +36,11 @@
             android:name=".ui.PlayerActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".ui.ChannelInfoActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
             
         <activity
             android:name=".settings.SettingsActivity"
