@@ -140,7 +140,8 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun openPlayer(channel: Channel) {
-        val intent = android.content.Intent(this, PlayerActivity::class.java).apply {
+        // Сначала открываем активность с информацией о канале
+        val intent = android.content.Intent(this, ChannelInfoActivity::class.java).apply {
             putExtra("channel_id", channel.id)
             putExtra("channel_name", channel.name)
             putExtra("stream_url", channel.streamUrl)

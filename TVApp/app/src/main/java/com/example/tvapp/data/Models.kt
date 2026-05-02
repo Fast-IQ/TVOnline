@@ -36,7 +36,7 @@ object ChannelList {
             id = "c1r",
             name = "Первый канал",
             logoUrl = "https://via.placeholder.com/400x225/E31E24/FFFFFF?text=Perviy+Kanal",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/1.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/210.m3u8",
             category = "federal",
             epgId = "c1r",
             channelImageUrl = "https://img.youtube.com/vi/jfKfPnJR9yw/maxresdefault.jpg"
@@ -45,7 +45,7 @@ object ChannelList {
             id = "rossiya1",
             name = "Россия 1",
             logoUrl = "https://via.placeholder.com/400x225/0066CC/FFFFFF?text=Rossiya+1",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/2.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/211.m3u8",
             category = "federal",
             epgId = "rossiya1",
             channelImageUrl = "https://img.youtube.com/vi/7HqZdXqLzKw/maxresdefault.jpg"
@@ -54,7 +54,7 @@ object ChannelList {
             id = "ntv",
             name = "НТВ",
             logoUrl = "https://via.placeholder.com/400x225/009933/FFFFFF?text=NTV",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/4.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/213.m3u8",
             category = "federal",
             epgId = "ntv",
             channelImageUrl = "https://img.youtube.com/vi/MnqOGWBmMJE/maxresdefault.jpg"
@@ -63,7 +63,7 @@ object ChannelList {
             id = "5tv",
             name = "5 Канал",
             logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=5+Kanal",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/5.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/8.m3u8",
             category = "federal",
             epgId = "5tv"
         ),
@@ -71,7 +71,7 @@ object ChannelList {
             id = "rossiya24",
             name = "Россия 24",
             logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=Rossiya+24",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/102.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/30.m3u8",
             category = "news",
             epgId = "rossiya24"
         ),
@@ -79,7 +79,7 @@ object ChannelList {
             id = "tvc",
             name = "ТВ Центр",
             logoUrl = "https://via.placeholder.com/400x225/FFCC00/FFFFFF?text=TV+Centr",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/10.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/13.m3u8",
             category = "federal",
             epgId = "tvc"
         ),
@@ -87,7 +87,7 @@ object ChannelList {
             id = "ren",
             name = "РЕН ТВ",
             logoUrl = "https://via.placeholder.com/400x225/FF0066/FFFFFF?text=REN+TV",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/6.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/14.m3u8",
             category = "federal",
             epgId = "ren"
         ),
@@ -95,7 +95,7 @@ object ChannelList {
             id = "sts",
             name = "СТС",
             logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=STS",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/7.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/296.m3u8",
             category = "entertainment",
             epgId = "sts"
         ),
@@ -103,7 +103,7 @@ object ChannelList {
             id = "domashniy",
             name = "Домашний",
             logoUrl = "https://via.placeholder.com/400x225/FF3399/FFFFFF?text=Domashniy",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/8.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/17.m3u8",
             category = "entertainment",
             epgId = "domashniy"
         ),
@@ -111,7 +111,7 @@ object ChannelList {
             id = "tv3",
             name = "ТВ-3",
             logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=TV-3",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/9.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/18.m3u8",
             category = "entertainment",
             epgId = "tv3"
         ),
@@ -119,7 +119,7 @@ object ChannelList {
             id = "pz",
             name = "Пятница!",
             logoUrl = "https://via.placeholder.com/400x225/FF00CC/FFFFFF?text=Pyatnitsa",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/11.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/19.m3u8",
             category = "entertainment",
             epgId = "pz"
         ),
@@ -127,7 +127,7 @@ object ChannelList {
             id = "2x2",
             name = "2х2",
             logoUrl = "https://via.placeholder.com/400x225/FF3300/FFFFFF?text=2x2",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/12.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/20.m3u8",
             category = "entertainment",
             epgId = "2x2"
         ),
@@ -135,7 +135,7 @@ object ChannelList {
             id = "mir",
             name = "МИР",
             logoUrl = "https://via.placeholder.com/400x225/0066FF/FFFFFF?text=MIR",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/103.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/22.m3u8",
             category = "news",
             epgId = "mir"
         ),
@@ -143,7 +143,7 @@ object ChannelList {
             id = "spas",
             name = "СПАС",
             logoUrl = "https://via.placeholder.com/400x225/FFD700/FFFFFF?text=SPAS",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/104.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/15.m3u8",
             category = "religious",
             epgId = "spas"
         ),
@@ -151,7 +151,7 @@ object ChannelList {
             id = "kultura",
             name = "Культура",
             logoUrl = "https://via.placeholder.com/400x225/003399/FFFFFF?text=Kultura",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/105.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/9.m3u8",
             category = "culture",
             epgId = "kultura"
         ),
@@ -159,7 +159,7 @@ object ChannelList {
             id = "karusel",
             name = "Карусель",
             logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=Karusel",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/106.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/232.m3u8",
             category = "kids",
             epgId = "karusel"
         ),
@@ -167,7 +167,7 @@ object ChannelList {
             id = "otv",
             name = "ОТВ",
             logoUrl = "https://via.placeholder.com/400x225/0099CC/FFFFFF?text=OTV",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/107.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/12.m3u8",
             category = "regional",
             epgId = "otv"
         ),
@@ -175,7 +175,7 @@ object ChannelList {
             id = "che",
             name = "Че",
             logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=Che",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/108.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/23.m3u8",
             category = "entertainment",
             epgId = "che"
         ),
@@ -183,7 +183,7 @@ object ChannelList {
             id = "dom kino",
             name = "Дом Кино",
             logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=Dom+Kino",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/109.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/44.m3u8",
             category = "movies",
             epgId = "dom_kino"
         ),
@@ -191,7 +191,7 @@ object ChannelList {
             id = "telecafe",
             name = "Телекафе",
             logoUrl = "https://via.placeholder.com/400x225/FF9933/FFFFFF?text=Telecafe",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/110.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/26.m3u8",
             category = "lifestyle",
             epgId = "telecafe"
         ),
@@ -199,7 +199,7 @@ object ChannelList {
             id = "ruhd",
             name = "РУДЕНЬ",
             logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=RUDEN",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/111.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/111.m3u8",
             category = "news",
             epgId = "ruhd"
         ),
@@ -207,7 +207,7 @@ object ChannelList {
             id = "mult",
             name = "МУЛЬТ",
             logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=MULT",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/112.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/112.m3u8",
             category = "kids",
             epgId = "mult"
         ),
@@ -215,7 +215,7 @@ object ChannelList {
             id = "muztv",
             name = "МУЗ-ТВ",
             logoUrl = "https://via.placeholder.com/400x225/FF0099/FFFFFF?text=MUZ-TV",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/113.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/618.m3u8",
             category = "music",
             epgId = "muztv"
         ),
@@ -223,7 +223,7 @@ object ChannelList {
             id = "tv1000",
             name = "TV1000",
             logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=TV1000",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/114.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/114.m3u8",
             category = "movies",
             epgId = "tv1000"
         ),
@@ -231,7 +231,7 @@ object ChannelList {
             id = "match",
             name = "Матч ТВ",
             logoUrl = "https://via.placeholder.com/400x225/009933/FFFFFF?text=Match+TV",
-            streamUrl = "https://streaming.televizor-24-tochka.ru/live/115.m3u8",
+            streamUrl = "https://streaming.goodstream.icu/live/6.m3u8",
             category = "sport",
             epgId = "match"
         ),
