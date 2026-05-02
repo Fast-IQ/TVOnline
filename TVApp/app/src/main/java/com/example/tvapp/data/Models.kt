@@ -35,7 +35,7 @@ object ChannelList {
         Channel(
             id = "c1r",
             name = "Первый канал",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Channel_One_Russia_logo_2024.svg/200px-Channel_One_Russia_logo_2024.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/E31E24/FFFFFF?text=Perviy+Kanal",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/1.m3u8",
             category = "federal",
             epgId = "c1r",
@@ -44,7 +44,7 @@ object ChannelList {
         Channel(
             id = "rossiya1",
             name = "Россия 1",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Russia_1_logo_%282017%29.svg/200px-Russia_1_logo_%282017%29.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/0066CC/FFFFFF?text=Rossiya+1",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/2.m3u8",
             category = "federal",
             epgId = "rossiya1",
@@ -53,7 +53,7 @@ object ChannelList {
         Channel(
             id = "ntv",
             name = "НТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/NTV_logo_2021.svg/200px-NTV_logo_2021.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/009933/FFFFFF?text=NTV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/4.m3u8",
             category = "federal",
             epgId = "ntv",
@@ -62,7 +62,7 @@ object ChannelList {
         Channel(
             id = "5tv",
             name = "5 Канал",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/5_kanal_logo_2022.svg/200px-5_kanal_logo_2022.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=5+Kanal",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/5.m3u8",
             category = "federal",
             epgId = "5tv"
@@ -70,7 +70,7 @@ object ChannelList {
         Channel(
             id = "rossiya24",
             name = "Россия 24",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Russia_24_logo.svg/200px-Russia_24_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=Rossiya+24",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/102.m3u8",
             category = "news",
             epgId = "rossiya24"
@@ -78,7 +78,7 @@ object ChannelList {
         Channel(
             id = "tvc",
             name = "ТВ Центр",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/TV_Center_logo.svg/200px-TV_Center_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FFCC00/FFFFFF?text=TV+Centr",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/10.m3u8",
             category = "federal",
             epgId = "tvc"
@@ -86,7 +86,7 @@ object ChannelList {
         Channel(
             id = "ren",
             name = "РЕН ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Ren_tv_logo_2015.svg/200px-Ren_tv_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF0066/FFFFFF?text=REN+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/6.m3u8",
             category = "federal",
             epgId = "ren"
@@ -94,7 +94,7 @@ object ChannelList {
         Channel(
             id = "sts",
             name = "СТС",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/STS_logo_2015.svg/200px-STS_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=STS",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/7.m3u8",
             category = "entertainment",
             epgId = "sts"
@@ -102,7 +102,7 @@ object ChannelList {
         Channel(
             id = "domashniy",
             name = "Домашний",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Domashniy_logo_2015.svg/200px-Domashniy_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF3399/FFFFFF?text=Domashniy",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/8.m3u8",
             category = "entertainment",
             epgId = "domashniy"
@@ -110,7 +110,7 @@ object ChannelList {
         Channel(
             id = "tv3",
             name = "ТВ-3",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/TV3_logo_2023.svg/200px-TV3_logo_2023.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=TV-3",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/9.m3u8",
             category = "entertainment",
             epgId = "tv3"
@@ -118,7 +118,7 @@ object ChannelList {
         Channel(
             id = "pz",
             name = "Пятница!",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Pyatnitsa%21_logo_2015.svg/200px-Pyatnitsa%21_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF00CC/FFFFFF?text=Pyatnitsa",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/11.m3u8",
             category = "entertainment",
             epgId = "pz"
@@ -126,7 +126,7 @@ object ChannelList {
         Channel(
             id = "2x2",
             name = "2х2",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2x2_logo_2015.svg/200px-2x2_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF3300/FFFFFF?text=2x2",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/12.m3u8",
             category = "entertainment",
             epgId = "2x2"
@@ -134,7 +134,7 @@ object ChannelList {
         Channel(
             id = "mir",
             name = "МИР",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/MIR_TV_logo.svg/200px-MIR_TV_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/0066FF/FFFFFF?text=MIR",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/103.m3u8",
             category = "news",
             epgId = "mir"
@@ -142,7 +142,7 @@ object ChannelList {
         Channel(
             id = "spas",
             name = "СПАС",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Spas_logo.svg/200px-Spas_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FFD700/FFFFFF?text=SPAS",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/104.m3u8",
             category = "religious",
             epgId = "spas"
@@ -150,7 +150,7 @@ object ChannelList {
         Channel(
             id = "kultura",
             name = "Культура",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Russia_K_logo.svg/200px-Russia_K_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/003399/FFFFFF?text=Kultura",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/105.m3u8",
             category = "culture",
             epgId = "kultura"
@@ -158,7 +158,7 @@ object ChannelList {
         Channel(
             id = "karusel",
             name = "Карусель",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=Karusel",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/106.m3u8",
             category = "kids",
             epgId = "karusel"
@@ -166,7 +166,7 @@ object ChannelList {
         Channel(
             id = "otv",
             name = "ОТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/OTV_logo.svg/200px-OTV_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/0099CC/FFFFFF?text=OTV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/107.m3u8",
             category = "regional",
             epgId = "otv"
@@ -174,7 +174,7 @@ object ChannelList {
         Channel(
             id = "che",
             name = "Че",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Che_logo.svg/200px-Che_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=Che",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/108.m3u8",
             category = "entertainment",
             epgId = "che"
@@ -182,7 +182,7 @@ object ChannelList {
         Channel(
             id = "dom kino",
             name = "Дом Кино",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=Dom+Kino",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/109.m3u8",
             category = "movies",
             epgId = "dom_kino"
@@ -190,7 +190,7 @@ object ChannelList {
         Channel(
             id = "telecafe",
             name = "Телекафе",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF9933/FFFFFF?text=Telecafe",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/110.m3u8",
             category = "lifestyle",
             epgId = "telecafe"
@@ -198,7 +198,7 @@ object ChannelList {
         Channel(
             id = "ruhd",
             name = "РУДЕНЬ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Russia_24_logo.svg/200px-Russia_24_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=RUDEN",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/111.m3u8",
             category = "news",
             epgId = "ruhd"
@@ -206,7 +206,7 @@ object ChannelList {
         Channel(
             id = "mult",
             name = "МУЛЬТ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=MULT",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/112.m3u8",
             category = "kids",
             epgId = "mult"
@@ -214,7 +214,7 @@ object ChannelList {
         Channel(
             id = "muztv",
             name = "МУЗ-ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF0099/FFFFFF?text=MUZ-TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/113.m3u8",
             category = "music",
             epgId = "muztv"
@@ -222,7 +222,7 @@ object ChannelList {
         Channel(
             id = "tv1000",
             name = "TV1000",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=TV1000",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/114.m3u8",
             category = "movies",
             epgId = "tv1000"
@@ -230,7 +230,7 @@ object ChannelList {
         Channel(
             id = "match",
             name = "Матч ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/009933/FFFFFF?text=Match+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/115.m3u8",
             category = "sport",
             epgId = "match"
@@ -240,7 +240,7 @@ object ChannelList {
         Channel(
             id = "ohota",
             name = "Охота и рыбалка",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2x2_logo_2015.svg/200px-2x2_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/2E7D32/FFFFFF?text=Ohota+i+Rybalka",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/116.m3u8",
             category = "hunting_fishing",
             epgId = "ohota"
@@ -248,7 +248,7 @@ object ChannelList {
         Channel(
             id = "rybolov",
             name = "Рыбалка TV",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2x2_logo_2015.svg/200px-2x2_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/0288D1/FFFFFF?text=Rybalka+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/117.m3u8",
             category = "hunting_fishing",
             epgId = "rybolov"
@@ -256,7 +256,7 @@ object ChannelList {
         Channel(
             id = "dikaya_ohota",
             name = "Дикая охота",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2x2_logo_2015.svg/200px-2x2_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/5D4037/FFFFFF?text=Dikaya+Ohota",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/118.m3u8",
             category = "hunting_fishing",
             epgId = "dikaya_ohota"
@@ -264,7 +264,7 @@ object ChannelList {
         Channel(
             id = "fishmaster",
             name = "FishMaster",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2x2_logo_2015.svg/200px-2x2_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/00796B/FFFFFF?text=FishMaster",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/119.m3u8",
             category = "hunting_fishing",
             epgId = "fishmaster"
@@ -274,7 +274,7 @@ object ChannelList {
         Channel(
             id = "animal_planet_ru",
             name = "Animal Planet Россия",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/0066CC/FFFFFF?text=Animal+Planet",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/120.m3u8",
             category = "nature",
             epgId = "animal_planet_ru"
@@ -282,7 +282,7 @@ object ChannelList {
         Channel(
             id = "nauka2",
             name = "Наука 2.0",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/1976D2/FFFFFF?text=Nauka+2.0",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/121.m3u8",
             category = "nature",
             epgId = "nauka2"
@@ -290,7 +290,7 @@ object ChannelList {
         Channel(
             id = "moya_planeta",
             name = "Моя планета",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/388E3C/FFFFFF?text=Moya+Planeta",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/122.m3u8",
             category = "nature",
             epgId = "moya_planeta"
@@ -298,7 +298,7 @@ object ChannelList {
         Channel(
             id = "zhivaya_planeta",
             name = "Живая планета",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/7CB342/FFFFFF?text=Zhivaya+Planeta",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/123.m3u8",
             category = "nature",
             epgId = "zhivaya_planeta"
@@ -306,7 +306,7 @@ object ChannelList {
         Channel(
             id = "dikiy",
             name = "Дикий мир",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/8BC34A/FFFFFF?text=Dikiy+Mir",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/124.m3u8",
             category = "nature",
             epgId = "dikiy"
@@ -314,7 +314,7 @@ object ChannelList {
         Channel(
             id = "zoo_tv",
             name = "ZOO TV",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FDD835/000000?text=ZOO+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/125.m3u8",
             category = "nature",
             epgId = "zoo_tv"
@@ -324,7 +324,7 @@ object ChannelList {
         Channel(
             id = "relax",
             name = "Релакс ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/BA68C8/FFFFFF?text=Relax+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/126.m3u8",
             category = "relax",
             epgId = "relax"
@@ -332,7 +332,7 @@ object ChannelList {
         Channel(
             id = "zdorovoe",
             name = "Здоровое ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/4DB6AC/FFFFFF?text=Zdorovoe+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/127.m3u8",
             category = "relax",
             epgId = "zdorovoe"
@@ -340,7 +340,7 @@ object ChannelList {
         Channel(
             id = "kushe",
             name = "Кухня ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/FF7043/FFFFFF?text=Kuhnya+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/128.m3u8",
             category = "lifestyle",
             epgId = "kushe"
@@ -348,7 +348,7 @@ object ChannelList {
         Channel(
             id = "usadba",
             name = "Усадьба",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/8D6E63/FFFFFF?text=Usadba",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/129.m3u8",
             category = "lifestyle",
             epgId = "usadba"
@@ -356,7 +356,7 @@ object ChannelList {
         Channel(
             id = "zagorodny",
             name = "Загородный",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/66BB6A/FFFFFF?text=Zagorodny",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/130.m3u8",
             category = "lifestyle",
             epgId = "zagorodny"
@@ -366,7 +366,7 @@ object ChannelList {
         Channel(
             id = "kino_comedy",
             name = "Кинокомедия",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/EF5350/FFFFFF?text=KinoKomediya",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/131.m3u8",
             category = "movies",
             epgId = "kino_comedy"
@@ -374,7 +374,7 @@ object ChannelList {
         Channel(
             id = "kino_series",
             name = "Киносериал",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/EC407A/FFFFFF?text=KinoSerial",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/132.m3u8",
             category = "movies",
             epgId = "kino_series"
@@ -382,7 +382,7 @@ object ChannelList {
         Channel(
             id = "kino_hit",
             name = "Кинохит",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/AB47BC/FFFFFF?text=KinoHit",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/133.m3u8",
             category = "movies",
             epgId = "kino_hit"
@@ -390,7 +390,7 @@ object ChannelList {
         Channel(
             id = "kino_tv",
             name = "Кино ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/7E57C2/FFFFFF?text=Kino+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/134.m3u8",
             category = "movies",
             epgId = "kino_tv"
@@ -398,7 +398,7 @@ object ChannelList {
         Channel(
             id = "ilovecinema",
             name = "I Love Cinema",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/5C6BC0/FFFFFF?text=I+Love+Cinema",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/135.m3u8",
             category = "movies",
             epgId = "ilovecinema"
@@ -406,7 +406,7 @@ object ChannelList {
         Channel(
             id = "nash_kino",
             name = "Наше кино",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Наше+кино",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/136.m3u8",
             category = "movies",
             epgId = "nash_kino"
@@ -414,7 +414,7 @@ object ChannelList {
         Channel(
             id = "indian_kino",
             name = "Индийское кино",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Индийское+кино",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/137.m3u8",
             category = "movies",
             epgId = "indian_kino"
@@ -422,7 +422,7 @@ object ChannelList {
         Channel(
             id = "tv1000_russian",
             name = "TV1000 Русское кино",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=TV1000+Русское+кино",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/138.m3u8",
             category = "movies",
             epgId = "tv1000_russian"
@@ -430,7 +430,7 @@ object ChannelList {
         Channel(
             id = "tv1000_action",
             name = "TV1000 Action",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=TV1000+Action",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/139.m3u8",
             category = "movies",
             epgId = "tv1000_action"
@@ -438,7 +438,7 @@ object ChannelList {
         Channel(
             id = "sony_scifi",
             name = "Сони Sci-Fi",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Сони+Sci-Fi",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/140.m3u8",
             category = "movies",
             epgId = "sony_scifi"
@@ -446,7 +446,7 @@ object ChannelList {
         Channel(
             id = "sony_channel",
             name = "Сони Канал",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Сони+Канал",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/141.m3u8",
             category = "movies",
             epgId = "sony_channel"
@@ -454,7 +454,7 @@ object ChannelList {
         Channel(
             id = "sony_turbo",
             name = "Сони Турбо",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Сони+Турбо",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/142.m3u8",
             category = "movies",
             epgId = "sony_turbo"
@@ -464,7 +464,7 @@ object ChannelList {
         Channel(
             id = "history_ru",
             name = "History Россия",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=History+Россия",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/143.m3u8",
             category = "documentary",
             epgId = "history_ru"
@@ -472,7 +472,7 @@ object ChannelList {
         Channel(
             id = "viasat_history",
             name = "Viasat History",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Viasat+History",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/144.m3u8",
             category = "documentary",
             epgId = "viasat_history"
@@ -480,7 +480,7 @@ object ChannelList {
         Channel(
             id = "viasat_nature",
             name = "Viasat Nature",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Viasat+Nature",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/145.m3u8",
             category = "nature",
             epgId = "viasat_nature"
@@ -488,7 +488,7 @@ object ChannelList {
         Channel(
             id = "viasat_explore",
             name = "Viasat Explore",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Viasat+Explore",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/146.m3u8",
             category = "documentary",
             epgId = "viasat_explore"
@@ -496,7 +496,7 @@ object ChannelList {
         Channel(
             id = "discovery_ru",
             name = "Discovery Россия",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Discovery+Россия",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/147.m3u8",
             category = "documentary",
             epgId = "discovery_ru"
@@ -504,7 +504,7 @@ object ChannelList {
         Channel(
             id = "nat_geo_wild",
             name = "Nat Geo Wild",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Nat+Geo+Wild",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/148.m3u8",
             category = "nature",
             epgId = "nat_geo_wild"
@@ -512,7 +512,7 @@ object ChannelList {
         Channel(
             id = "bbc_earth",
             name = "BBC Earth",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=BBC+Earth",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/149.m3u8",
             category = "nature",
             epgId = "bbc_earth"
@@ -520,7 +520,7 @@ object ChannelList {
         Channel(
             id = "24_doc",
             name = "24 Док",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Telecafe_logo.svg/200px-Telecafe_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=24+Док",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/150.m3u8",
             category = "documentary",
             epgId = "24_doc"
@@ -528,7 +528,7 @@ object ChannelList {
         Channel(
             id = "mir_serialov",
             name = "Мир Сериалов",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Мир+Сериалов",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/151.m3u8",
             category = "series",
             epgId = "mir_serialov"
@@ -536,7 +536,7 @@ object ChannelList {
         Channel(
             id = "mira_detektiv",
             name = "Мир Детективов",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Dom_kino_logo.svg/200px-Dom_kino_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Мир+Детективов",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/152.m3u8",
             category = "series",
             epgId = "mira_detektiv"
@@ -546,7 +546,7 @@ object ChannelList {
         Channel(
             id = "ru_tv",
             name = "RU.TV",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=RU.TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/153.m3u8",
             category = "music",
             epgId = "ru_tv"
@@ -554,7 +554,7 @@ object ChannelList {
         Channel(
             id = "europa_plus",
             name = "Europa Plus TV",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Europa+Plus+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/154.m3u8",
             category = "music",
             epgId = "europa_plus"
@@ -562,7 +562,7 @@ object ChannelList {
         Channel(
             id = "bridge_tv",
             name = "Bridge TV",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Bridge+TV",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/155.m3u8",
             category = "music",
             epgId = "bridge_tv"
@@ -570,7 +570,7 @@ object ChannelList {
         Channel(
             id = "bridge_hit",
             name = "Bridge TV Хит",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Bridge+TV+Хит",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/156.m3u8",
             category = "music",
             epgId = "bridge_hit"
@@ -578,7 +578,7 @@ object ChannelList {
         Channel(
             id = "bridge_classic",
             name = "Bridge TV Classic",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Bridge+TV+Classic",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/157.m3u8",
             category = "music",
             epgId = "bridge_classic"
@@ -586,7 +586,7 @@ object ChannelList {
         Channel(
             id = "shanson_tv",
             name = "Шансон ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Шансон+ТВ",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/158.m3u8",
             category = "music",
             epgId = "shanson_tv"
@@ -594,7 +594,7 @@ object ChannelList {
         Channel(
             id = "first_music",
             name = "Первый Музыкальный",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Muz_tv_logo.svg/200px-Muz_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Первый+Музыкальный",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/159.m3u8",
             category = "music",
             epgId = "first_music"
@@ -604,7 +604,7 @@ object ChannelList {
         Channel(
             id = "match_premier",
             name = "Матч Премьер",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Матч+Премьер",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/160.m3u8",
             category = "sport",
             epgId = "match_premier"
@@ -612,7 +612,7 @@ object ChannelList {
         Channel(
             id = "match_arena",
             name = "Матч! Арена",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Матч+Арена",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/161.m3u8",
             category = "sport",
             epgId = "match_arena"
@@ -620,7 +620,7 @@ object ChannelList {
         Channel(
             id = "match_igra",
             name = "Матч! Игра",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Матч+Игра",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/162.m3u8",
             category = "sport",
             epgId = "match_igra"
@@ -628,7 +628,7 @@ object ChannelList {
         Channel(
             id = "match_strana",
             name = "Матч! Страна",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Матч+Страна",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/163.m3u8",
             category = "sport",
             epgId = "match_strana"
@@ -636,7 +636,7 @@ object ChannelList {
         Channel(
             id = "khl_tv",
             name = "КХЛ ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=КХЛ+ТВ",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/164.m3u8",
             category = "sport",
             epgId = "khl_tv"
@@ -644,7 +644,7 @@ object ChannelList {
         Channel(
             id = "football_tv",
             name = "Футбол ТВ",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Match_tv_logo.svg/200px-Match_tv_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Футбол+ТВ",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/165.m3u8",
             category = "sport",
             epgId = "football_tv"
@@ -654,7 +654,7 @@ object ChannelList {
         Channel(
             id = "tiji",
             name = "TiJi",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=TiJi",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/166.m3u8",
             category = "kids",
             epgId = "tiji"
@@ -662,7 +662,7 @@ object ChannelList {
         Channel(
             id = "gulli",
             name = "Gulli",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Gulli",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/167.m3u8",
             category = "kids",
             epgId = "gulli"
@@ -670,7 +670,7 @@ object ChannelList {
         Channel(
             id = "boom",
             name = "Boomerang",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Boomerang",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/168.m3u8",
             category = "kids",
             epgId = "boom"
@@ -678,7 +678,7 @@ object ChannelList {
         Channel(
             id = "disney_ru",
             name = "Disney Россия",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Disney+Россия",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/169.m3u8",
             category = "kids",
             epgId = "disney_ru"
@@ -686,7 +686,7 @@ object ChannelList {
         Channel(
             id = "starchild",
             name = "StarChild",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Karusel_logo_2019.svg/200px-Karusel_logo_2019.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=StarChild",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/170.m3u8",
             category = "kids",
             epgId = "starchild"
@@ -696,7 +696,7 @@ object ChannelList {
         Channel(
             id = "rain",
             name = "Дождь",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Russia_24_logo.svg/200px-Russia_24_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Дождь",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/171.m3u8",
             category = "news",
             epgId = "rain"
@@ -704,7 +704,7 @@ object ChannelList {
         Channel(
             id = "rtvi",
             name = "RTVI",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Russia_24_logo.svg/200px-Russia_24_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=RTVI",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/172.m3u8",
             category = "news",
             epgId = "rtvi"
@@ -712,7 +712,7 @@ object ChannelList {
         Channel(
             id = "euronews_ru",
             name = "Euronews Русский",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Russia_24_logo.svg/200px-Russia_24_logo.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Euronews+Русский",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/173.m3u8",
             category = "news",
             epgId = "euronews_ru"
@@ -722,7 +722,7 @@ object ChannelList {
         Channel(
             id = "friday_int",
             name = "Friday! International",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Pyatnitsa%21_logo_2015.svg/200px-Pyatnitsa%21_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Friday+International",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/174.m3u8",
             category = "entertainment",
             epgId = "friday_int"
@@ -730,7 +730,7 @@ object ChannelList {
         Channel(
             id = "paramount_comedy",
             name = "Paramount Comedy",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Pyatnitsa%21_logo_2015.svg/200px-Pyatnitsa%21_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Paramount+Comedy",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/175.m3u8",
             category = "entertainment",
             epgId = "paramount_comedy"
@@ -738,7 +738,7 @@ object ChannelList {
         Channel(
             id = "black_silver",
             name = "Black & Silver",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Pyatnitsa%21_logo_2015.svg/200px-Pyatnitsa%21_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Black+&+Silver",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/176.m3u8",
             category = "entertainment",
             epgId = "black_silver"
@@ -746,7 +746,7 @@ object ChannelList {
         Channel(
             id = "start_world",
             name = "Start World",
-            logoUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Pyatnitsa%21_logo_2015.svg/200px-Pyatnitsa%21_logo_2015.svg.png",
+            logoUrl = "https://via.placeholder.com/400x225/555555/FFFFFF?text=Start+World",
             streamUrl = "https://streaming.televizor-24-tochka.ru/live/177.m3u8",
             category = "entertainment",
             epgId = "start_world"
