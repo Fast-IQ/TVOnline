@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var channelAdapter: ChannelAdapter
     
     private val epgRepository = EPGRepository()
-    private val preferences by lazy { AppPreferences(this) }
+    private val preferences by lazy { AppPreferences(applicationContext) }
     
     private var allPrograms = mapOf<String, List<com.example.tvapp.data.Program>>()
     private var currentTimeZoneOffset = 0

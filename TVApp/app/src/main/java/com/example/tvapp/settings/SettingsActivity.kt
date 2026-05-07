@@ -18,7 +18,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var qualityModeText: TextView
     private lateinit var languageText: TextView
     
-    private val preferences by lazy { AppPreferences(this) }
+    private val preferences by lazy { AppPreferences(applicationContext) }
     
     private val timezones = listOf(
         -12 to "-12 (UTC-12)",

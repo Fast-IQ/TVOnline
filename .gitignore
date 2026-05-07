@@ -1,38 +1,45 @@
 ```
-# Android/Kotlin specific ignores
+# Compiled and build artifacts
 *.class
 *.dex
-*.jar
-*.aar
 *.so
+*.aar
+*.jar
 *.apk
 *.aab
 
-# Build directories
-TVApp/build/
-TVApp/app/build/
-
-# Gradle
+# Dependencies
 .gradle/
-TVApp/.gradle/
+build/
+.externalNativeBuild/
+.cxx/
 
-# IDE files
-.idea/
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Android Studio generated files
 *.iml
-*.ipr
 *.iws
-.vscode/
+*.idea/
+.idea/
+
+# Log files
+*.log
+
+# Coverage reports
+coverage/
+*.gcov
+*.lcov
+*.profdata
+
+# Environment
+.env
+.env.local
+.env.*
 
 # Temp files
 *.tmp
-*.swp
 *~
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
-
-# Local configuration
-local.properties
 ```

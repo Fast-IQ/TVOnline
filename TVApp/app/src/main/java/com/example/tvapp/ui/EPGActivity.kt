@@ -34,7 +34,7 @@ class EPGActivity : AppCompatActivity() {
     private lateinit var channelLabelsScroll: NestedScrollView
 
     private val epgRepository = EPGRepository()
-    private val preferences by lazy { AppPreferences(this) }
+    private val preferences by lazy { AppPreferences(applicationContext) }
 
     private var currentTimeZoneOffset = 0
     private var selectedDate = Date()
