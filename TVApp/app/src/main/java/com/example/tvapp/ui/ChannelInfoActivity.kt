@@ -40,12 +40,12 @@ class ChannelInfoActivity : AppCompatActivity() {
         if (!channelImageUrl.isNullOrEmpty()) {
             Glide.with(this)
                 .load(channelImageUrl)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(channelImage)
         } else if (!logoUrl.isNullOrEmpty()) {
             Glide.with(this)
                 .load(logoUrl)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(android.R.drawable.ic_menu_gallery)
                 .into(channelImage)
         }
         

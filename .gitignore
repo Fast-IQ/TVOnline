@@ -1,45 +1,65 @@
-```
-# Compiled and build artifacts
+# Compiled and binary files
 *.class
-*.dex
+*.o
+*.obj
 *.so
-*.aar
-*.jar
-*.apk
-*.aab
+*.dll
+*.exe
+*.out
 
 # Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+target/
 .gradle/
+
+# Build artifacts
+dist/
 build/
-.externalNativeBuild/
-.cxx/
+*.jar
+*.war
+*.aar
 
-# Local configuration file (sdk path, etc)
-local.properties
-
-# Android Studio generated files
-*.iml
-*.iws
-*.idea/
+# IDE and editor files
+.vscode/
 .idea/
-
-# Log files
-*.log
-
-# Coverage reports
-coverage/
-*.gcov
-*.lcov
-*.profdata
-
-# Environment
-.env
-.env.local
-.env.*
-
-# Temp files
+*.swp
+*.swo
 *.tmp
-*~
+
+# System files
 .DS_Store
 Thumbs.db
-```
+.env
+.env.local
+*.env.*
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Android specific
+*.apk
+*.aab
+local.properties
+.gradle/
+/build/
+captures/
+.externalNativeBuild
+.cxx/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/runConfigurations/
+.nyc_output
+coverage/
+*.dmg
+*.zip
