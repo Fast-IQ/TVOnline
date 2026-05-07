@@ -13,7 +13,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:use_controller="false" />
+        app:use_controller="false"
+        app:keep_screen_on="true" />
 
     <TextView
         android:id="@+id/infoText"

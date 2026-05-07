@@ -30,19 +30,37 @@ class TVPlayerManager(private val context: Context) {
                         Player.STATE_READY -> {
                             callback?.onPlaybackReady()
                         }
+                        Player.STATE_BUFFERING -> {
+                            callback?.onBuffering(true)
+                        }
+                        Player.STATE_IDLE -> {
+                            callback?.onBuffering(false)
+                        }
                         Player.STATE_ENDED -> {
                             // Воспроизведение завершено
                         }
-                        else -> {}
                     }
                 }
                 
                 override fun onPlayerError(error: PlaybackException) {
-                    callback?.onPlaybackError(error.message ?: "Неизвестная ошибка")
+                    val errorMessage = when (error.errorCode) {
+                        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> 
+                            "Ошибка сетевого подключения. Проверьте интернет-соединение."
+                        PlaybackException.ERROR_CODE_IO_INVALID_HTTP_CONTENT_TYPE -> 
+                            "Неподдерживаемый формат потока."
+                        PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED -> 
+                            "Формат видео не поддерживается."
+                        PlaybackException.ERROR_CODE_IO_TIMEOUT -> 
+                            "Превышено время ожидания ответа от сервера."
+                        else -> error.message ?: "Неизвестная ошибка воспроизведения"
+                    }
+                    callback?.onPlaybackError(errorMessage)
                 }
                 
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
-                    // Изменилось состояние воспроизведения
+                    if (isPlaying) {
+                        callback?.onBuffering(false)
+                    }
                 }
             })
         }
@@ -51,7 +69,8 @@ class TVPlayerManager(private val context: Context) {
     
     fun playChannel(streamUrl: String, channelId: String) {
         exoPlayer?.apply {
-            stop()
+            // Очищаем текущий медиа элемент перед загрузкой нового
+            clearMediaItems()
             
             val mediaItem = MediaItem.fromUri(streamUrl)
             setMediaItem(mediaItem)

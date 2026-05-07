@@ -66,13 +66,26 @@ class PlayerActivity : AppCompatActivity() {
         
         // Запускаем воспроизведение
         if (!streamUrl.isNullOrEmpty()) {
-            infoText.text = "Загрузка канала: $channelName...\nURL: $streamUrl"
+            infoText.text = "Загрузка канала: $channelName..."
             infoText.visibility = View.VISIBLE
             playerManager.playChannel(streamUrl!!, channelId ?: "")
         } else {
             infoText.text = "Ошибка: URL потока не указан"
             infoText.visibility = View.VISIBLE
+            Toast.makeText(this, "URL потока отсутствует", Toast.LENGTH_LONG).show()
         }
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        // Возобновляем воспроизведение при возврате в активность
+        playerManager.resume()
+    }
+    
+    override fun onPause() {
+        super.onPause()
+        // Приостанавливаем воспроизведение при уходе из активности
+        playerManager.pause()
     }
     
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
