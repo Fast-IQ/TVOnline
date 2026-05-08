@@ -94,6 +94,14 @@ class PlayerActivity : AppCompatActivity() {
                 finish()
                 true
             }
+            KeyEvent.KEYCODE_DPAD_CENTER,
+            KeyEvent.KEYCODE_ENTER -> {
+                // Обработка нажатия OK - проверяем состояние плеера
+                if (!playerManager.isPlaying()) {
+                    playerManager.resume()
+                }
+                true
+            }
             else -> super.onKeyDown(keyCode, event)
         }
     }

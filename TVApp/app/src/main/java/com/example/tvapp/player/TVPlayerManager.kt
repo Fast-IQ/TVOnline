@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
+import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.ui.PlayerView
 import com.example.tvapp.data.AppPreferences
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.net.SocketTimeoutException
+import java.net.ConnectException
 
 class TVPlayerManager(private val context: Context) {
     
@@ -23,45 +27,61 @@ class TVPlayerManager(private val context: Context) {
     }
     
     fun initializePlayer(playerView: PlayerView, callback: PlayerCallback? = null) {
-        exoPlayer = ExoPlayer.Builder(context).build().apply {
-            addListener(object : Player.Listener {
-                override fun onPlaybackStateChanged(state: Int) {
-                    when (state) {
-                        Player.STATE_READY -> {
-                            callback?.onPlaybackReady()
+        // Настраиваем контроллер загрузки с увеличенными буферами для ТВ
+        val loadControl = DefaultLoadControl.Builder()
+            .setBufferDurationsMs(
+                15000, // minBufferMs - 15 секунд
+                60000, // maxBufferMs - 60 секунд
+                3000,  // bufferForPlaybackMs - 3 секунды до начала воспроизведения
+                6000   // bufferForPlaybackAfterRebufferMs - 6 секунд после повторной буферизации
+            )
+            .build()
+        
+        exoPlayer = ExoPlayer.Builder(context)
+            .setLoadControl(loadControl)
+            .build().apply {
+                addListener(object : Player.Listener {
+                    override fun onPlaybackStateChanged(state: Int) {
+                        when (state) {
+                            Player.STATE_READY -> {
+                                callback?.onPlaybackReady()
+                            }
+                            Player.STATE_BUFFERING -> {
+                                callback?.onBuffering(true)
+                            }
+                            Player.STATE_IDLE -> {
+                                callback?.onBuffering(false)
+                            }
+                            Player.STATE_ENDED -> {
+                                // Воспроизведение завершено
+                            }
                         }
-                        Player.STATE_BUFFERING -> {
-                            callback?.onBuffering(true)
+                    }
+                    
+                    override fun onPlayerError(error: PlaybackException) {
+                        val errorMessage = when (error.errorCode) {
+                            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> 
+                                "Ошибка сетевого подключения. Проверьте интернет-соединение."
+                            PlaybackException.ERROR_CODE_IO_INVALID_HTTP_CONTENT_TYPE -> 
+                                "Неподдерживаемый формат потока."
+                            PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED -> 
+                                "Формат видео не поддерживается."
+                            PlaybackException.ERROR_CODE_IO_TIMEOUT ->
+                                "Время ожидания истекло. Поток слишком медленный."
+                            PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS ->
+                                "Сервер вернул ошибку доступа."
+                            else -> "${error.message ?: "Неизвестная ошибка"} (код: ${error.errorCode})"
                         }
-                        Player.STATE_IDLE -> {
+                        callback?.onPlaybackError(errorMessage)
+                    }
+                    
+                    override fun onIsPlayingChanged(isPlaying: Boolean) {
+                        if (isPlaying) {
                             callback?.onBuffering(false)
                         }
-                        Player.STATE_ENDED -> {
-                            // Воспроизведение завершено
-                        }
                     }
-                }
-                
-                override fun onPlayerError(error: PlaybackException) {
-                    val errorMessage = when (error.errorCode) {
-                        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> 
-                            "Ошибка сетевого подключения. Проверьте интернет-соединение."
-                        PlaybackException.ERROR_CODE_IO_INVALID_HTTP_CONTENT_TYPE -> 
-                            "Неподдерживаемый формат потока."
-                        PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED -> 
-                            "Формат видео не поддерживается."
-                        else -> error.message ?: "Неизвестная ошибка воспроизведения"
-                    }
-                    callback?.onPlaybackError(errorMessage)
-                }
-                
-                override fun onIsPlayingChanged(isPlaying: Boolean) {
-                    if (isPlaying) {
-                        callback?.onBuffering(false)
-                    }
-                }
-            })
-        }
+                })
+            }
         playerView.player = exoPlayer
     }
     
@@ -70,7 +90,11 @@ class TVPlayerManager(private val context: Context) {
             // Очищаем текущий медиа элемент перед загрузкой нового
             clearMediaItems()
             
-            val mediaItem = MediaItem.fromUri(streamUrl)
+            // Создаем MediaItem с настройками для/live потоков
+            val mediaItem = MediaItem.fromUri(streamUrl).buildUpon()
+                .setTag(channelId) // Добавляем тег для идентификации
+                .build()
+            
             setMediaItem(mediaItem)
             prepare()
             playWhenReady = true
