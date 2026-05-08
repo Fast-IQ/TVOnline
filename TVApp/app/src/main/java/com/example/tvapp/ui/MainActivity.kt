@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     
     private var allPrograms = mapOf<String, List<com.example.tvapp.data.Program>>()
     private var currentTimeZoneOffset = 0
+    private var lastSelectedChannelId: String? = null
     
     private val scope = CoroutineScope(Dispatchers.Main + Job())
     
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         channelAdapter = ChannelAdapter(
             channels = ChannelList.channels,
             onChannelSelected = { channel ->
+                lastSelectedChannelId = channel.id
+                preferences.lastChannelId = channel.id
                 openPlayer(channel)
             },
             onSettingsClicked = {
@@ -69,6 +72,9 @@ class MainActivity : AppCompatActivity() {
             // Навигация с пульта
             descendantFocusability = ViewGroup.FOCUS_AFTER_DESCENDANTS
         }
+        
+        // Восстанавливаем последний выбранный канал и обновляем информацию о программе
+        restoreLastChannel()
     }
     
     private fun loadEPG() {
@@ -109,11 +115,21 @@ class MainActivity : AppCompatActivity() {
         
         channelAdapter.updateCurrentPrograms(currentProgramsMap)
         
-        // Обновляем текст текущей программы для выбранного канала
-        if (ChannelList.channels.isNotEmpty()) {
+        // Обновляем текст текущей программы для последнего выбранного канала
+        val channelIdToShow = lastSelectedChannelId ?: preferences.lastChannelId
+        if (channelIdToShow != null) {
+            currentProgramsMap[channelIdToShow]?.let {
+                currentProgramText.text = "Сейчас: $it"
+            } ?: run {
+                currentProgramText.text = "Выберите канал"
+            }
+        } else if (ChannelList.channels.isNotEmpty()) {
+            // Если нет сохраненного канала, показываем программу первого канала
             val firstChannelId = ChannelList.channels[0].id
             currentProgramsMap[firstChannelId]?.let {
                 currentProgramText.text = "Сейчас: $it"
+            } ?: run {
+                currentProgramText.text = "Выберите канал"
             }
         }
     }
@@ -126,8 +142,10 @@ class MainActivity : AppCompatActivity() {
                 // Прокручиваем к последнему каналу
                 val position = ChannelList.channels.indexOf(it)
                 if (position != -1) {
-                    channelsRecyclerView.scrollToPosition(position)
+                    channelsRecyclerView.scrollToPosition(position + 2) // +2 для настроек и EPG
                 }
+                // Сохраняем как последний выбранный для отображения программы
+                lastSelectedChannelId = lastChannelId
             }
         }
     }
