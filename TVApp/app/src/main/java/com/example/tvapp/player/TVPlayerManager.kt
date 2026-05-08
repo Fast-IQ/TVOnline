@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
+import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
@@ -25,6 +26,7 @@ class TVPlayerManager(private val context: Context) {
         fun onBuffering(isBuffering: Boolean)
     }
     
+    @OptIn(markerClass = UnstableApi::class)
     fun initializePlayer(playerView: PlayerView, callback: PlayerCallback? = null) {
         // Настраиваем контроллер загрузки с увеличенными буферами для ТВ
         val loadControl = DefaultLoadControl.Builder()
