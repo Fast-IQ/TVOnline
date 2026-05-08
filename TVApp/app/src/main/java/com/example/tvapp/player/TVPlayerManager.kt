@@ -6,7 +6,6 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.ui.PlayerView
 import com.example.tvapp.data.AppPreferences
 import kotlinx.coroutines.CoroutineScope
@@ -66,8 +65,6 @@ class TVPlayerManager(private val context: Context) {
                                 "Неподдерживаемый формат потока."
                             PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED -> 
                                 "Формат видео не поддерживается."
-                            PlaybackException.ERROR_CODE_IO_TIMEOUT ->
-                                "Время ожидания истекло. Поток слишком медленный."
                             PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS ->
                                 "Сервер вернул ошибку доступа."
                             else -> "${error.message ?: "Неизвестная ошибка"} (код: ${error.errorCode})"

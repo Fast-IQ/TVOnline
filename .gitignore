@@ -1,3 +1,1 @@
-```
-.gradle/
-```
+Nothing should be ignored based on the provided file changes. The modification of a single Kotlin source file (`TVPlayerManager.kt`) does not warrant any additions to the `.gitignore` file, as it's a standard source code file that should be tracked in version control. Since there are no build artifacts, dependency directories, temporary files, or other items that match common ignore patterns in the changes provided, no modifications to the `.gitignore` content are necessary. Therefore, no output is produced.
