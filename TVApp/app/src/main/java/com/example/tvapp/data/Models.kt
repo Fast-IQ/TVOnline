@@ -35,7 +35,7 @@ object ChannelList {
         Channel(
             id = "c1r",
             name = "Первый канал",
-            logoUrl = "https://via.placeholder.com/400x225/E31E24/FFFFFF?text=Perviy+Kanal",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/0/0a/Perviy_Kanal_2025.svg",
             streamUrl = "https://streaming.goodstream.icu/live/210.m3u8",
             category = "federal",
             epgId = "c1r",
@@ -44,7 +44,7 @@ object ChannelList {
         Channel(
             id = "rossiya1",
             name = "Россия 1",
-            logoUrl = "https://via.placeholder.com/400x225/0066CC/FFFFFF?text=Rossiya+1",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/8/87/Rossiya_1_2017.svg",
             streamUrl = "https://streaming.goodstream.icu/live/211.m3u8",
             category = "federal",
             epgId = "rossiya1",
@@ -53,7 +53,7 @@ object ChannelList {
         Channel(
             id = "ntv",
             name = "НТВ",
-            logoUrl = "https://via.placeholder.com/400x225/009933/FFFFFF?text=NTV",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/9/9c/NTV_2023.svg",
             streamUrl = "https://streaming.goodstream.icu/live/213.m3u8",
             category = "federal",
             epgId = "ntv",
@@ -62,7 +62,7 @@ object ChannelList {
         Channel(
             id = "5tv",
             name = "5 Канал",
-            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=5+Kanal",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/6/6e/Peterburg_-_5_kanal_2022.svg",
             streamUrl = "https://streaming.goodstream.icu/live/8.m3u8",
             category = "federal",
             epgId = "5tv"
@@ -70,7 +70,7 @@ object ChannelList {
         Channel(
             id = "rossiya24",
             name = "Россия 24",
-            logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=Rossiya+24",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/c/cb/Rossiya_24_2017.svg",
             streamUrl = "https://streaming.goodstream.icu/live/30.m3u8",
             category = "news",
             epgId = "rossiya24"
@@ -78,7 +78,7 @@ object ChannelList {
         Channel(
             id = "tvc",
             name = "ТВ Центр",
-            logoUrl = "https://via.placeholder.com/400x225/FFCC00/FFFFFF?text=TV+Centr",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/9/94/TVCentr_2015.svg",
             streamUrl = "https://streaming.goodstream.icu/live/13.m3u8",
             category = "federal",
             epgId = "tvc"
@@ -86,7 +86,7 @@ object ChannelList {
         Channel(
             id = "ren",
             name = "РЕН ТВ",
-            logoUrl = "https://via.placeholder.com/400x225/FF0066/FFFFFF?text=REN+TV",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/f/f3/REN_TV_2019.svg",
             streamUrl = "https://streaming.goodstream.icu/live/14.m3u8",
             category = "federal",
             epgId = "ren"
@@ -94,7 +94,7 @@ object ChannelList {
         Channel(
             id = "sts",
             name = "СТС",
-            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=STS",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/7/79/STS_2017.svg",
             streamUrl = "https://streaming.goodstream.icu/live/296.m3u8",
             category = "entertainment",
             epgId = "sts"
@@ -102,7 +102,7 @@ object ChannelList {
         Channel(
             id = "domashniy",
             name = "Домашний",
-            logoUrl = "https://via.placeholder.com/400x225/FF3399/FFFFFF?text=Domashniy",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/0/0f/Domashniy_2019.svg",
             streamUrl = "https://streaming.goodstream.icu/live/17.m3u8",
             category = "entertainment",
             epgId = "domashniy"
@@ -110,7 +110,7 @@ object ChannelList {
         Channel(
             id = "tv3",
             name = "ТВ-3",
-            logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=TV-3",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/7/7b/TV3_2023.svg",
             streamUrl = "https://streaming.goodstream.icu/live/18.m3u8",
             category = "entertainment",
             epgId = "tv3"
@@ -118,7 +118,7 @@ object ChannelList {
         Channel(
             id = "pz",
             name = "Пятница!",
-            logoUrl = "https://via.placeholder.com/400x225/FF00CC/FFFFFF?text=Pyatnitsa",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/7/7f/Pyatnitsa_2023.svg",
             streamUrl = "https://streaming.goodstream.icu/live/19.m3u8",
             category = "entertainment",
             epgId = "pz"
@@ -126,7 +126,7 @@ object ChannelList {
         Channel(
             id = "2x2",
             name = "2х2",
-            logoUrl = "https://via.placeholder.com/400x225/FF3300/FFFFFF?text=2x2",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/6/6e/2x2_2020.svg",
             streamUrl = "https://streaming.goodstream.icu/live/20.m3u8",
             category = "entertainment",
             epgId = "2x2"
@@ -134,7 +134,7 @@ object ChannelList {
         Channel(
             id = "mir",
             name = "МИР",
-            logoUrl = "https://via.placeholder.com/400x225/0066FF/FFFFFF?text=MIR",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/6/6d/Mir_2017.svg",
             streamUrl = "https://streaming.goodstream.icu/live/22.m3u8",
             category = "news",
             epgId = "mir"
@@ -142,7 +142,7 @@ object ChannelList {
         Channel(
             id = "spas",
             name = "СПАС",
-            logoUrl = "https://via.placeholder.com/400x225/FFD700/FFFFFF?text=SPAS",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/2/2f/Spas_2005.svg",
             streamUrl = "https://streaming.goodstream.icu/live/15.m3u8",
             category = "religious",
             epgId = "spas"
@@ -150,7 +150,7 @@ object ChannelList {
         Channel(
             id = "kultura",
             name = "Культура",
-            logoUrl = "https://via.placeholder.com/400x225/003399/FFFFFF?text=Kultura",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/9/97/Kultura_2010.svg",
             streamUrl = "https://streaming.goodstream.icu/live/9.m3u8",
             category = "culture",
             epgId = "kultura"
@@ -158,7 +158,7 @@ object ChannelList {
         Channel(
             id = "karusel",
             name = "Карусель",
-            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=Karusel",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/7/7a/Karusel_2019.svg",
             streamUrl = "https://streaming.goodstream.icu/live/232.m3u8",
             category = "kids",
             epgId = "karusel"
@@ -166,7 +166,7 @@ object ChannelList {
         Channel(
             id = "otv",
             name = "ОТВ",
-            logoUrl = "https://via.placeholder.com/400x225/0099CC/FFFFFF?text=OTV",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/1/1f/OTV_2016.svg",
             streamUrl = "https://streaming.goodstream.icu/live/12.m3u8",
             category = "regional",
             epgId = "otv"
@@ -174,7 +174,7 @@ object ChannelList {
         Channel(
             id = "che",
             name = "Че",
-            logoUrl = "https://via.placeholder.com/400x225/CC0000/FFFFFF?text=Che",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/9/96/Che_2016.svg",
             streamUrl = "https://streaming.goodstream.icu/live/23.m3u8",
             category = "entertainment",
             epgId = "che"
@@ -182,7 +182,7 @@ object ChannelList {
         Channel(
             id = "dom kino",
             name = "Дом Кино",
-            logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=Dom+Kino",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/4/4f/Dom_Kino_2018.svg",
             streamUrl = "https://streaming.goodstream.icu/live/44.m3u8",
             category = "movies",
             epgId = "dom_kino"
@@ -190,7 +190,7 @@ object ChannelList {
         Channel(
             id = "telecafe",
             name = "Телекафе",
-            logoUrl = "https://via.placeholder.com/400x225/FF9933/FFFFFF?text=Telecafe",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/3/3a/Telecafe_2016.svg",
             streamUrl = "https://streaming.goodstream.icu/live/26.m3u8",
             category = "lifestyle",
             epgId = "telecafe"
@@ -206,7 +206,7 @@ object ChannelList {
         Channel(
             id = "mult",
             name = "МУЛЬТ",
-            logoUrl = "https://via.placeholder.com/400x225/FF6600/FFFFFF?text=MULT",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/3/3f/Mult_2019.svg",
             streamUrl = "https://streaming.goodstream.icu/live/112.m3u8",
             category = "kids",
             epgId = "mult"
@@ -214,7 +214,7 @@ object ChannelList {
         Channel(
             id = "muztv",
             name = "МУЗ-ТВ",
-            logoUrl = "https://via.placeholder.com/400x225/FF0099/FFFFFF?text=MUZ-TV",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/e/e7/MUZ-TV_2021.svg",
             streamUrl = "https://streaming.goodstream.icu/live/618.m3u8",
             category = "music",
             epgId = "muztv"
@@ -222,7 +222,7 @@ object ChannelList {
         Channel(
             id = "tv1000",
             name = "TV1000",
-            logoUrl = "https://via.placeholder.com/400x225/9933CC/FFFFFF?text=TV1000",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/3/3e/TV1000_2016.svg",
             streamUrl = "https://streaming.goodstream.icu/live/114.m3u8",
             category = "movies",
             epgId = "tv1000"
@@ -230,7 +230,7 @@ object ChannelList {
         Channel(
             id = "match",
             name = "Матч ТВ",
-            logoUrl = "https://via.placeholder.com/400x225/009933/FFFFFF?text=Match+TV",
+            logoUrl = "https://static.wikia.nocookie.net/logopedia/images/1/12/Match_TV_2015.svg",
             streamUrl = "https://streaming.goodstream.icu/live/6.m3u8",
             category = "sport",
             epgId = "match"
