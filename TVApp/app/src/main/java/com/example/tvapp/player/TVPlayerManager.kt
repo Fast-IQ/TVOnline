@@ -46,12 +46,12 @@ class TVPlayerManager(private val context: Context) {
                     val errorMessage = when (error.errorCode) {
                         PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED -> 
                             "Ошибка сетевого подключения. Проверьте интернет-соединение."
+                        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMED_OUT -> 
+                            "Превышено время ожидания ответа от сервера."
                         PlaybackException.ERROR_CODE_IO_INVALID_HTTP_CONTENT_TYPE -> 
                             "Неподдерживаемый формат потока."
                         PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED -> 
                             "Формат видео не поддерживается."
-                        PlaybackException.ERROR_CODE_IO_TIMEOUT -> 
-                            "Превышено время ожидания ответа от сервера."
                         else -> error.message ?: "Неизвестная ошибка воспроизведения"
                     }
                     callback?.onPlaybackError(errorMessage)
