@@ -26,7 +26,7 @@ class TVPlayerManager(private val context: Context) {
         fun onBuffering(isBuffering: Boolean)
     }
     
-    @OptIn(markerClass = UnstableApi::class)
+    @OptIn(UnstableApi::class)
     fun initializePlayer(playerView: PlayerView, callback: PlayerCallback? = null) {
         // Настраиваем контроллер загрузки с увеличенными буферами для ТВ
         val loadControl = DefaultLoadControl.Builder()
